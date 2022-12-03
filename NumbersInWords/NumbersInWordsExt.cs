@@ -3,12 +3,16 @@ public static class NumbersInWordsExt
 {
     private static Dictionary<int, string> numbers = new Dictionary<int, string>() {
         { 1, "en" },
+        { 2, "to" },
         { 3, "tre" },
         { 4, "fire" },
         { 6, "seks" },
         { 7, "syv" },
+        { 8, "åtte" },
         { 9, "ni" },
+        { 10, "ti" },
         { 11, "elleve" },
+        { 12, "tolv" },
         { 20, "tjue" },
         { 50, "femti" },
         { 80, "åtti" },
