@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "check:typescript": "tsc --noEmit",
+    "check:prettier": "prettier --check **/*.[jt]s",
+    "check": "npm run check:typescript && npm run check:prettier"
   },
   "keywords": [],
   "author": "",
