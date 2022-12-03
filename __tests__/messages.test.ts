@@ -5,6 +5,11 @@ type Message =
   | {
       code: "invalidWeekday";
       weekday: string;
+    }
+    | {
+        code: "invalidEmailDomain",
+        emailInput: string,
+        validDomains: string[]
     };
 
 interface Language {
