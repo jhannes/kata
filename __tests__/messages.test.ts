@@ -1,16 +1,16 @@
 type Message = {
-    code: "generalError";
-  };
+  code: "generalError";
+};
 
 interface Language {
-    generalError: string;
+  generalError: string;
 }
 
 const english: Language = {
-    generalError: "An error has occurred"
+  generalError: "An error has occurred",
 };
 const norwegian: Language = {
-    generalError: "En feil har inntruffet"
+  generalError: "En feil har inntruffet",
 };
 
 function showMessage(language: Language, message: Message) {
@@ -28,5 +28,11 @@ describe("translations", () => {
     expect(showMessage(norwegian, { code: "generalError" })).toBe(
       "En feil har inntruffet"
     );
+  });
+
+  it("shows a message with argument", () => {
+    expect(
+      showMessage(english, { code: "invalidWeekday", weekday: "Doomsday" })
+    ).toBe('"Doomsday" is not a valid weekday');
   });
 });
