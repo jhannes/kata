@@ -1,5 +1,5 @@
 ﻿namespace NumbersInWords;
-public class Class1
+public class NumbersInWordsExt
 {
 
 }
