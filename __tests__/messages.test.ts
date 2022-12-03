@@ -19,23 +19,26 @@ interface MessageTexts {
     validDomains: string[];
   }): string;
   invalidWeekday(args: { weekday: string }): string;
+  joinWithOr(args: string[]): string;
 }
 
 const english: MessageTexts = {
   generalError: "An error has occurred",
   invalidEmailDomain: ({ emailInput, validDomains }) =>
-    `The email address ${emailInput} must have domain ${validDomains.join(
-      " or "
+    `The email address ${emailInput} must have domain ${english.joinWithOr(
+      validDomains
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
+  joinWithOr: (args) => args.join(" or "),
 };
 const norwegian: MessageTexts = {
   generalError: "En feil har inntruffet",
   invalidEmailDomain: ({ emailInput, validDomains }) =>
-    `Emailadressen ${emailInput} må være i domene ${validDomains.join(
-      " eller "
+    `Emailadressen ${emailInput} må være i domene ${norwegian.joinWithOr(
+      validDomains
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
+  joinWithOr: (args) => args.join(" eller "),
 };
 
 function showMessage(language: MessageTexts, message: Message) {
