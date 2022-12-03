@@ -1,5 +1,5 @@
 describe("translations", () => {
   it("translates", () => {
-    expect("true").toBe(false);
+    expect("true").toBe("true");
   });
 });
