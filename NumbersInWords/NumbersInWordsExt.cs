@@ -55,12 +55,7 @@ public static class NumbersInWordsExt
 
         if (n >= 1000)
         {
-            if (n % 1000 == 0)
-                return (n / 1000).ToWords() + " tusen";
-            else if (n % 1000 < 100)
-                return (n - n % 1000).ToWords() + " og " + (n % 1000).ToWords();
-            else
-                return (n - n % 1000).ToWords() + " " + (n % 1000).ToWords();
+            return SplitLargeNumber(n, 1000, "tusen");
         }
 
         if (n >= 100)
@@ -76,4 +71,13 @@ public static class NumbersInWordsExt
         throw new Exception("Don't know what to do with " + n);
     }
 
+    private static string SplitLargeNumber(long n, long value, string name)
+    {
+        if (n % value == 0)
+            return (n/value).ToWords() + " " + name;
+        if (n % value < 100)
+            return (n - n % value).ToWords() + " og " + (n % value).ToWords();
+        else
+            return (n - n % value).ToWords() + " " + (n % value).ToWords();
+    }
 }
