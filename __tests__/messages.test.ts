@@ -1,6 +1,5 @@
 import { showMessage, english, norwegian } from "../messages";
 
-
 describe("translations", () => {
   it("shows a message in english", () => {
     expect(showMessage(english, { code: "generalError" })).toBe(
@@ -57,5 +56,14 @@ describe("translations", () => {
         validDomains: ["example.com"],
       })
     ).toBe("The email address f@a.com must have domain example.com");
+  });
+
+  it("shows message with a date", () => {
+    expect(
+      showMessage(english, {
+        code: "tooLateDueDate",
+        dueDate: new Date(2023, 1, 16),
+      })
+    ).toBe("Due date must be before January 16, 2023");
   });
 });
