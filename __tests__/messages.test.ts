@@ -29,6 +29,8 @@ const norwegian: Language = {
 function showMessage(language: Language, message: Message) {
   if (message.code === "invalidWeekday") {
     return language.invalidWeekday(message.weekday);
+  } else if (message.code === "invalidEmailDomain") {
+    return "";
   }
   return language[message.code];
 }
