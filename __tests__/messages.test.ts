@@ -1,5 +1,5 @@
 describe("translations", () => {
-  it("translates", () => {
-    expect("true").toBe("true");
+  it("shows a message in english", () => {
+    expect(showMessage(english, { code: "generalError" })).toBe("An error has occurred");
   });
 });
