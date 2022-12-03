@@ -3,8 +3,9 @@ public static class NumbersInWordsExt
 {
     private static Dictionary<int, string> numbers = new Dictionary<int, string>() {
         { 1, "en" },
+        { 4, "fire" },
+        { 56, "femtiseks" },
         { 123, "et hundre og tjuetre" },
-        //{ 456, "fire hundre og femtiseks" },
         { 789, "syv hundre og åttini" },
     };
 
@@ -24,7 +25,7 @@ public static class NumbersInWordsExt
 
         if (n >= 100)
         {
-            return (n / 100).ToWords() + " hundre " + (n % 100).ToWords();
+            return (n / 100).ToWords() + " hundre og " + (n % 100).ToWords();
         }
 
         throw new Exception("Don't know what to do with " + n);
