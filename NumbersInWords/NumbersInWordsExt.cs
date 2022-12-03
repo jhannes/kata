@@ -7,8 +7,8 @@ public static class NumbersInWordsExt
         { 4, "fire" },
         { 7, "syv" },
         { 20, "tjue" },
-        { 56, "femtiseks" },
-        { 89, "åttini" },
+        //{ 56, "femtiseks" },
+        //{ 89, "åttini" },
         { 100, "et hundre" },
     };
 
