@@ -1,6 +1,11 @@
-type Message = {
-  code: "generalError";
-};
+type Message =
+  | {
+      code: "generalError";
+    }
+  | {
+      code: "invalidWeekday";
+      weekday: string;
+    };
 
 interface Language {
   generalError: string;
@@ -14,6 +19,9 @@ const norwegian: Language = {
 };
 
 function showMessage(language: Language, message: Message) {
+  if (message.code === "invalidWeekday") {
+    return language.invalidWeekday(message.weekday);
+  }
   return language[message.code];
 }
 
