@@ -1,12 +1,20 @@
-const english = {};
-const norwegian = {};
-
 type Message = {
-  code: "generalError";
+    code: "generalError";
+  };
+
+interface Language {
+    generalError: string;
+}
+
+const english: Language = {
+    generalError: "An error has occurred"
+};
+const norwegian: Language = {
+    generalError: "En feil har inntruffet"
 };
 
-function showMessage(language: object, message: Message) {
-  return "An error has occurred";
+function showMessage(language: Language, message: Message) {
+  return language[message.code];
 }
 
 describe("translations", () => {
