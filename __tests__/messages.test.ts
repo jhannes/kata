@@ -14,35 +14,32 @@ type Message =
 
 interface Language {
   generalError: string;
-  invalidEmailDomain(emailInput: string, validDomains: string[]): string;
-  invalidWeekday(weekday: string): string;
+  invalidEmailDomain(args: {emailInput: string, validDomains: string[]}): string;
+  invalidWeekday(args: {weekday: string}): string;
 }
 
 const english: Language = {
   generalError: "An error has occurred",
-  invalidEmailDomain: (emailInput, validDomains) =>
+  invalidEmailDomain: ({emailInput, validDomains}) =>
     `The email address ${emailInput} must have domain ${validDomains.join(
       " or "
     )}`,
-  invalidWeekday: (weekday) => `"${weekday}" is not a valid weekday`,
+  invalidWeekday: ({weekday}) => `"${weekday}" is not a valid weekday`,
 };
 const norwegian: Language = {
   generalError: "En feil har inntruffet",
-  invalidEmailDomain: (emailInput, validDomains) =>
+  invalidEmailDomain: ({emailInput, validDomains}) =>
     `The email address ${emailInput} must have domain ${validDomains.join(
       " or "
     )}`,
-  invalidWeekday: (weekday) => `"${weekday}" is not a valid weekday`,
+  invalidWeekday: ({weekday}) => `"${weekday}" is not a valid weekday`,
 };
 
 function showMessage(language: Language, message: Message) {
   if (message.code === "invalidWeekday") {
-    return language.invalidWeekday(message.weekday);
+    return language.invalidWeekday(message);
   } else if (message.code === "invalidEmailDomain") {
-    return language.invalidEmailDomain(
-      message.emailInput,
-      message.validDomains
-    );
+    return language.invalidEmailDomain(message);
   }
   return language[message.code];
 }
