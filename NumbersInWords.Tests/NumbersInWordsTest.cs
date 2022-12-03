@@ -2,9 +2,10 @@ namespace NumbersInWords.Tests;
 
 public class NumbersInWordsTest
 {
-    [Fact]
-    public void ShouldReturnEnForOne()
+    [Theory]
+    [InlineData(1, "en")]
+    public void ShouldReturnEnForOne(int number, string expected)
     {
-        Assert.Equal("en", 1.ToWords());
+        Assert.Equal(expected, number.ToWords());
     }
 }
