@@ -14,25 +14,28 @@ type Message =
 
 interface MessageTexts {
   generalError: string;
-  invalidEmailDomain(args: {emailInput: string, validDomains: string[]}): string;
-  invalidWeekday(args: {weekday: string}): string;
+  invalidEmailDomain(args: {
+    emailInput: string;
+    validDomains: string[];
+  }): string;
+  invalidWeekday(args: { weekday: string }): string;
 }
 
 const english: MessageTexts = {
   generalError: "An error has occurred",
-  invalidEmailDomain: ({emailInput, validDomains}) =>
+  invalidEmailDomain: ({ emailInput, validDomains }) =>
     `The email address ${emailInput} must have domain ${validDomains.join(
       " or "
     )}`,
-  invalidWeekday: ({weekday}) => `"${weekday}" is not a valid weekday`,
+  invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
 };
 const norwegian: MessageTexts = {
   generalError: "En feil har inntruffet",
-  invalidEmailDomain: ({emailInput, validDomains}) =>
+  invalidEmailDomain: ({ emailInput, validDomains }) =>
     `The email address ${emailInput} must have domain ${validDomains.join(
       " or "
     )}`,
-  invalidWeekday: ({weekday}) => `"${weekday}" is not a valid weekday`,
+  invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
 };
 
 function showMessage(language: MessageTexts, message: Message) {
@@ -72,6 +75,23 @@ describe("translations", () => {
       })
     ).toBe(
       "The email address test@example.net must have domain example.com or example.org"
+    );
+  });
+
+  it("shows comma between array arguments", () => {
+    expect(
+      showMessage(norwegian, {
+        code: "invalidEmailDomain",
+        emailInput: "test@example.net",
+        validDomains: [
+          "foo.example.com",
+          "bar.example.com",
+          "quz.example.com",
+          "quux.example.com",
+        ],
+      })
+    ).toBe(
+      "Emailadressen test@example.net må være i domene foo.example.com, bar.example.com, quz.example.com eller quuz.example.com"
     );
   });
 });
