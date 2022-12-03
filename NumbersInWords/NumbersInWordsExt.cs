@@ -1,7 +1,7 @@
 ﻿namespace NumbersInWords;
 public static class NumbersInWordsExt
 {
-    private static Dictionary<int, string> numbers = new Dictionary<int, string>() {
+    private static Dictionary<long, string> numbers = new Dictionary<long, string>() {
         { 1, "en" },
         { 2, "to" },
         { 3, "tre" },
@@ -25,7 +25,7 @@ public static class NumbersInWordsExt
         { 1_000_000, "en million" },
     };
 
-    public static string ToWords(this int n)
+    public static string ToWords(this long n)
     {
         if (numbers.ContainsKey(n)) return numbers[n];
 
