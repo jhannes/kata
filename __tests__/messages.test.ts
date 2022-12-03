@@ -1,7 +1,7 @@
 const english = {};
 
 function showMessage(language, message) {
-    
+    return "An error has occurred";
 }
 
 
