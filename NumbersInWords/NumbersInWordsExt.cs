@@ -38,38 +38,21 @@ public static class NumbersInWordsExt
     public static string ToWords(this long n)
     {
         if (numbers.ContainsKey(n)) return numbers[n];
-
-        if (n >= 1_000_000_000)
-        {
-            return SplitLargeNumber(n, 1_000_000_000, "milliarder");
-        }
-        if (n >= 1_000_000)
-        {
-            return SplitLargeNumber(n, 1_000_000, "millioner");
-        }
-        if (n >= 1000)
-        {
-            return SplitLargeNumber(n, 1000, "tusen");
-        }
-        if (n >= 100)
-        {
-            return SplitLargeNumber(n, 100, "hundre");
-        }
-        if (n >= 20)
-        {
-            return numbers[(n - n % 10)] + numbers[(n % 10)];
-        }
+        if (n >= 1_000_000_000) return SplitLargeNumber(n, 1_000_000_000, "milliarder");
+        if (n >= 1_000_000) return SplitLargeNumber(n, 1_000_000, "millioner");
+        if (n >= 1000) return SplitLargeNumber(n, 1000, "tusen");
+        if (n >= 100) return SplitLargeNumber(n, 100, "hundre");
+        if (n >= 20) return numbers[(n - n % 10)] + numbers[(n % 10)];
 
         throw new Exception("Don't know what to do with " + n);
     }
 
     private static string SplitLargeNumber(long n, long value, string name)
     {
-        if (n % value == 0)
-            return (n/value).ToWords() + " " + name;
-        if (n % value < 100)
-            return (n - n % value).ToWords() + " og " + (n % value).ToWords();
-        else
-            return (n - n % value).ToWords() + " " + (n % value).ToWords();
+        var remainder = n % value;
+        if (remainder == 0) return (n/value).ToWords() + " " + name;
+        return (n - remainder).ToWords()
+            + (remainder < 100 ? " og " : " ")
+            + remainder.ToWords();
     }
 }
