@@ -41,27 +41,19 @@ public static class NumbersInWordsExt
 
         if (n >= 1_000_000_000)
         {
-            if (n % 1_000_000_000 == 0) return (n / 1_000_000_000).ToWords() + " milliarder";
-            else if (n % 1_000_000_000 < 100)
-                return (n - n % 1_000_000_000).ToWords() + " og " + (n % 1_000_000_000).ToWords();
-            return (n - n % 1_000_000_000).ToWords() + " " + (n % 1_000_000_000).ToWords();
+            return SplitLargeNumber(n, 1_000_000_000, "milliarder");
         }
-
         if (n >= 1_000_000)
         {
-            if (n % 1_000_000 == 0) return (n / 1_000_000).ToWords() + " millioner";
-            return (n - n % 1_000_000).ToWords() + " " + (n % 1_000_000).ToWords();
+            return SplitLargeNumber(n, 1_000_000, "millioner");
         }
-
         if (n >= 1000)
         {
             return SplitLargeNumber(n, 1000, "tusen");
         }
-
         if (n >= 100)
         {
-            if (n % 100 == 0) return (n / 100).ToWords() + " hundre";
-            return (n - n % 100).ToWords() + " og " + (n % 100).ToWords();
+            return SplitLargeNumber(n, 100, "hundre");
         }
         if (n >= 20)
         {
