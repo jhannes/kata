@@ -8,10 +8,13 @@ public static class NumbersInWordsExt
         { 6, "seks" },
         { 7, "syv" },
         { 9, "ni" },
+        { 11, "elleve" },
         { 20, "tjue" },
         { 50, "femti" },
         { 80, "åtti" },
         { 100, "et hundre" },
+        { 1000, "et tusen" },
+        { 1_000_000, "en million" },
     };
 
     public static string ToWords(this int n)
@@ -20,12 +23,18 @@ public static class NumbersInWordsExt
 
         if (n >= 1_000_000)
         {
-            return (n / 1_000_000).ToWords() + " millioner " + (n % 1_000_000).ToWords();
+            if (n % 1_000_000 == 0) return (n / 1_000_000).ToWords() + " millioner";
+            return (n - n % 1_000_000).ToWords() + " " + (n % 1_000_000).ToWords();
         }
 
         if (n >= 1000)
         {
-            return (n / 1000).ToWords() + " tusen " + (n % 1000).ToWords();
+            if (n % 1000 == 0)
+                return (n / 1000).ToWords() + " tusen";
+            else if (n % 1000 < 100)
+                return (n - n % 1000).ToWords() + " og " + (n % 1000).ToWords();
+            else
+                return (n - n % 1000).ToWords() + " " + (n % 1000).ToWords();
         }
 
         if (n >= 100)
