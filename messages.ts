@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { nb } from "date-fns/locale";
 interface MessageTexts {
   tooLateDueDate(args: { dueDateLimit: Date }): unknown;
   generalError: string;
@@ -41,7 +42,9 @@ export const norwegian: MessageTexts = {
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
   tooLateDueDate: ({ dueDateLimit }) =>
-    `Forfallsdato må settes til før ${format(dueDateLimit, "PPP")}`,
+    `Forfallsdato må settes til før ${format(dueDateLimit, "PPP", {
+      locale: nb,
+    })}`,
   joinWithOr: (args) => joinWithComma(args, "eller"),
 };
 
