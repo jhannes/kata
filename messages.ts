@@ -1,4 +1,5 @@
 interface MessageTexts {
+  tooLateDueDate(args: { dueDateLimit: Date }): unknown;
   generalError: string;
   invalidEmailDomain(args: {
     emailInput: string;
@@ -11,6 +12,8 @@ interface MessageTexts {
 export function showMessage(language: MessageTexts, message: Message) {
   if (message.code === "invalidWeekday") {
     return language.invalidWeekday(message);
+  } else if (message.code === "tooLateDueDate") {
+    return language.tooLateDueDate(message);
   } else if (message.code === "invalidEmailDomain") {
     return language.invalidEmailDomain(message);
   }
@@ -24,6 +27,7 @@ export const english: MessageTexts = {
       validDomains
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
+  tooLateDueDate: ({ dueDateLimit }) => "test",
   joinWithOr: (args) => joinWithComma(args, "or"),
 };
 
@@ -34,6 +38,7 @@ export const norwegian: MessageTexts = {
       validDomains
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
+  tooLateDueDate: ({ dueDateLimit }) => "test",
   joinWithOr: (args) => joinWithComma(args, "eller"),
 };
 
@@ -44,6 +49,10 @@ type Message =
   | {
       code: "invalidWeekday";
       weekday: string;
+    }
+  | {
+      code: "tooLateDueDate";
+      dueDateLimit: Date;
     }
   | {
       code: "invalidEmailDomain";
