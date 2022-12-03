@@ -17,6 +17,10 @@ public static class NumbersInWordsExt
         { 13, "tretten" },
         { 14, "fjorten" },
         { 15, "femten" },
+        { 16, "seksten" },
+        { 17, "sytten" },
+        { 18, "atten" },
+        { 19, "nitten" },
         { 20, "tjue" },
         { 50, "femti" },
         { 80, "åtti" },
@@ -28,6 +32,12 @@ public static class NumbersInWordsExt
     public static string ToWords(this long n)
     {
         if (numbers.ContainsKey(n)) return numbers[n];
+
+        if (n >= 1_000_000_000)
+        {
+            if (n % 1_000_000_000 == 0) return (n / 1_000_000_000).ToWords() + " milliarder";
+            return (n - n % 1_000_000_000).ToWords() + " " + (n % 1_000_000_000).ToWords();
+        }
 
         if (n >= 1_000_000)
         {
