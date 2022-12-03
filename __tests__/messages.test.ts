@@ -103,4 +103,14 @@ describe("translations", () => {
       "Emailadressen test@example.net må være i domene foo.example.com, bar.example.com, quz.example.com eller quux.example.com"
     );
   });
+
+  it("shows message with a single array element", () => {
+    expect(
+      showMessage(english, {
+        code: "invalidEmailDomain",
+        emailInput: "f@a.com",
+        validDomains: ["example.com"],
+      })
+    ).toBe("The email address f@a.com must have domain example.com");
+  });
 });
