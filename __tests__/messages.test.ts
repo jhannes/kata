@@ -32,8 +32,8 @@ const english: MessageTexts = {
 const norwegian: MessageTexts = {
   generalError: "En feil har inntruffet",
   invalidEmailDomain: ({ emailInput, validDomains }) =>
-    `The email address ${emailInput} must have domain ${validDomains.join(
-      " or "
+    `Emailadressen ${emailInput} må være i domene ${validDomains.join(
+      " eller "
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
 };
@@ -91,7 +91,7 @@ describe("translations", () => {
         ],
       })
     ).toBe(
-      "Emailadressen test@example.net må være i domene foo.example.com, bar.example.com, quz.example.com eller quuz.example.com"
+      "Emailadressen test@example.net må være i domene foo.example.com, bar.example.com, quz.example.com eller quux.example.com"
     );
   });
 });
