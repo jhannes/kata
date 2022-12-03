@@ -14,7 +14,7 @@ public class NumbersInWordsTest
     [InlineData(40_060_070_090,
         "førti milliarder seksti millioner sytti tusen og nitti"
     )]
-    [InlineData(1_030_000_000, "en milliard tretti millioner")]
+    [InlineData(1_000_000_030, "en milliard og tretti")]
     [InlineData(123_456_789,
         "et hundre og tjuetre millioner fire hundre og femtiseks tusen syv hundre og åttini"
     )]
