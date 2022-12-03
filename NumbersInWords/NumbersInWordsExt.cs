@@ -5,9 +5,10 @@ public static class NumbersInWordsExt
         { 1, "en" },
         { 4, "fire" },
         { 7, "syv" },
+        { 23, "tjuetre" },
         { 56, "femtiseks" },
         { 89, "åttini" },
-        { 123, "et hundre og tjuetre" },
+        { 100, "et hundre" },
     };
 
     public static string ToWords(this int n)
@@ -26,7 +27,8 @@ public static class NumbersInWordsExt
 
         if (n >= 100)
         {
-            return (n / 100).ToWords() + " hundre og " + (n % 100).ToWords();
+            if (n % 100 == 0) return (n / 100).ToWords() + " hundre";
+            return (n - n % 100).ToWords() + " og " + (n % 100).ToWords();
         }
 
         throw new Exception("Don't know what to do with " + n);
