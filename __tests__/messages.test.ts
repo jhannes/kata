@@ -1,6 +1,10 @@
 const english = {};
 
-function showMessage(language: object, message: object) {
+type Message = {
+    code: string;
+};
+
+function showMessage(language: object, message: Message) {
     return "An error has occurred";
 }
 
