@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { nb } from "date-fns/locale";
+import { nb, enUS } from "date-fns/locale";
 interface MessageTexts {
   tooLateDueDate(args: { dueDateLimit: Date }): unknown;
   generalError: string;
@@ -30,7 +30,7 @@ export const english: MessageTexts = {
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
   tooLateDueDate: ({ dueDateLimit }) =>
-    `Due date must be before ${format(dueDateLimit, "PPP")}`,
+    `Due date must be before ${format(dueDateLimit, "PPP", { locale: enUS })}`,
   joinWithOr: (args) => joinWithComma(args, "or"),
 };
 
