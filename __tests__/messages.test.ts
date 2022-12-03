@@ -14,15 +14,18 @@ type Message =
 
 interface Language {
   generalError: string;
+  invalidEmailDomain(emailInput: string, validDomains: string[]): string;
   invalidWeekday(weekday: string): string;
 }
 
 const english: Language = {
   generalError: "An error has occurred",
+  invalidEmailDomain: (weekday) => "The email address test@example.net must have domain example.com or example.org",
   invalidWeekday: (weekday) => `"${weekday}" is not a valid weekday`,
 };
 const norwegian: Language = {
   generalError: "En feil har inntruffet",
+  invalidEmailDomain: (weekday) => "The email address test@example.net must have domain example.com or example.org",
   invalidWeekday: (weekday) => `"${weekday}" is not a valid weekday`,
 };
 
@@ -30,7 +33,7 @@ function showMessage(language: Language, message: Message) {
   if (message.code === "invalidWeekday") {
     return language.invalidWeekday(message.weekday);
   } else if (message.code === "invalidEmailDomain") {
-    return "";
+    return language.invalidEmailDomain(message.emailInput, message.validDomains);
   }
   return language[message.code];
 }
