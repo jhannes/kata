@@ -40,7 +40,8 @@ export const norwegian: MessageTexts = {
       validDomains
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
-  tooLateDueDate: ({ dueDateLimit }) => "test",
+  tooLateDueDate: ({ dueDateLimit }) =>
+    `Forfallsdato må settes til før ${format(dueDateLimit, "PPP")}`,
   joinWithOr: (args) => joinWithComma(args, "eller"),
 };
 

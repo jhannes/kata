@@ -66,4 +66,13 @@ describe("translations", () => {
       })
     ).toBe("Due date must be before January 16th, 2023");
   });
+
+  it("shows message with a date in norwegian", () => {
+    expect(
+      showMessage(norwegian, {
+        code: "tooLateDueDate",
+        dueDateLimit: new Date(2023, 0, 16),
+      })
+    ).toBe("Forfallsdato må settes til før 16. januar 2023");
+  });
 });
