@@ -62,8 +62,8 @@ describe("translations", () => {
     expect(
       showMessage(english, {
         code: "tooLateDueDate",
-        dueDate: new Date(2023, 1, 16),
+        dueDateLimit: new Date(2023, 0, 16),
       })
-    ).toBe("Due date must be before January 16, 2023");
+    ).toBe("Due date must be before January 16th, 2023");
   });
 });
