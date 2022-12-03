@@ -13,7 +13,9 @@ type Message =
     };
 
 function joinWithComma(args: string[], lastConjunction: string) {
-  return args.join(` ${lastConjunction} `);
+  const input = [...args];
+  const last = input.pop();
+  return `${input.join(", ")} ${lastConjunction} ${last}`;
 }
 
 interface MessageTexts {
