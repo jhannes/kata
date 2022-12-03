@@ -12,6 +12,10 @@ type Message =
       validDomains: string[];
     };
 
+function joinWithComma(args: string[], lastConjunction: string) {
+  return args.join(` ${lastConjunction} `);
+}
+
 interface MessageTexts {
   generalError: string;
   invalidEmailDomain(args: {
@@ -29,7 +33,7 @@ const english: MessageTexts = {
       validDomains
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
-  joinWithOr: (args) => args.join(" or "),
+  joinWithOr: (args) => joinWithComma(args, "or"),
 };
 const norwegian: MessageTexts = {
   generalError: "En feil har inntruffet",
@@ -38,7 +42,7 @@ const norwegian: MessageTexts = {
       validDomains
     )}`,
   invalidWeekday: ({ weekday }) => `"${weekday}" is not a valid weekday`,
-  joinWithOr: (args) => args.join(" eller "),
+  joinWithOr: (args) => joinWithComma(args, "eller"),
 };
 
 function showMessage(language: MessageTexts, message: Message) {
