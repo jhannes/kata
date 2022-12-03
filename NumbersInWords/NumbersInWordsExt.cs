@@ -42,6 +42,8 @@ public static class NumbersInWordsExt
         if (n >= 1_000_000_000)
         {
             if (n % 1_000_000_000 == 0) return (n / 1_000_000_000).ToWords() + " milliarder";
+            else if (n % 1_000_000_000 < 100)
+                return (n - n % 1_000_000_000).ToWords() + " og " + (n % 1_000_000_000).ToWords();
             return (n - n % 1_000_000_000).ToWords() + " " + (n % 1_000_000_000).ToWords();
         }
 
