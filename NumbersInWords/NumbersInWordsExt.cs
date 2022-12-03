@@ -5,10 +5,12 @@ public static class NumbersInWordsExt
         { 1, "en" },
         { 3, "tre" },
         { 4, "fire" },
+        { 6, "seks" },
         { 7, "syv" },
+        { 9, "ni" },
         { 20, "tjue" },
-        //{ 56, "femtiseks" },
-        //{ 89, "åttini" },
+        { 50, "femti" },
+        { 80, "åtti" },
         { 100, "et hundre" },
     };
 
