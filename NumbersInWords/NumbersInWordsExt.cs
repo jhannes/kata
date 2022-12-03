@@ -22,6 +22,7 @@ public static class NumbersInWordsExt
         { 18, "atten" },
         { 19, "nitten" },
         { 20, "tjue" },
+        { 30, "tretti" },
         { 40, "førti" },
         { 50, "femti" },
         { 60, "seksti" },
@@ -31,6 +32,7 @@ public static class NumbersInWordsExt
         { 100, "et hundre" },
         { 1000, "et tusen" },
         { 1_000_000, "en million" },
+        { 1_000_000_000, "en milliard" },
     };
 
     public static string ToWords(this long n)
