@@ -1,7 +1,7 @@
 const english = {};
 
 type Message = {
-    code: string;
+    code: "generalError";
 };
 
 function showMessage(language: object, message: Message) {
