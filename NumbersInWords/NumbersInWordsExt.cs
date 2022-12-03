@@ -4,7 +4,8 @@ public static class NumbersInWordsExt
     private static Dictionary<int, string> numbers = new Dictionary<int, string>() {
         { 1, "en" },
         { 123, "et hundre og tjuetre" },
-        //{ 456_789, "fire hundre og femtiseks tusen syv hundre og åttini" },
+        { 456, "fire hundre og femtiseks" },
+        { 789, "syv hundre og åttini" },
     };
 
     public static string ToWords(this int n)
