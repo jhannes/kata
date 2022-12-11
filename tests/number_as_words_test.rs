@@ -47,6 +47,7 @@ fn base_numbers(n: i32) -> Option<&'static str> {
         30 => Some("tretti"),
         40 => Some("førti"),
         100 => Some("et hundre"),
+        1000 => Some("et tusen"),
         1700 => Some("et tusen syv hundre"),
         _ => None
     }
