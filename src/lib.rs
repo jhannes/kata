@@ -2,7 +2,9 @@ pub fn number_in_words(n: i32) -> String {
     match base_numbers(n) {
         Some(n) => n.to_string(),
         None => {
-            if n > 1000 {
+            if n > 1_000_000 {
+                larger_numbers(n, 1_000_000, "millioner")
+            } else if n > 1000 {
                 larger_numbers(n, 1000, "tusen")
             } else if n > 100 {
                 larger_numbers(n, 100, "hundre")
@@ -42,13 +44,17 @@ fn base_numbers(n: i32) -> Option<&'static str> {
         13 => Some("tretten"),
         14 => Some("fjorten"),
         15 => Some("femten"),
+        16 => Some("seksten"),
         17 => Some("sytten"),
+        18 => Some("atten"),
+        19 => Some("nitten"),
         20 => Some("tjue"),
         30 => Some("tretti"),
         40 => Some("førti"),
         100 => Some("et hundre"),
         1000 => Some("et tusen"),
         1700 => Some("et tusen syv hundre"),
+        1_000_000 => Some("en million"),
         _ => None
     }
 }
