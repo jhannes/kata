@@ -22,10 +22,8 @@ jobs:
           ~/.cargo
           ./target/debug/deps
         key: cargo-cache-{{ checksum "Cargo.toml" }}
-    - run: cargo install cargo-junit
     - name: Run tests
-      run: cargo test --verbose
-    - run: cargo junit --name test-results.xml
+      run: cargo test -- -Z unstable-options --report-time --format json > test-results.xml
     - uses: actions/upload-artifact@v3
       with:
         name: test-report
