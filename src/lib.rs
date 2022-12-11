@@ -1,4 +1,4 @@
-pub fn number_in_words(n: i32) -> String {
+pub fn number_in_words(n: i64) -> String {
     match base_numbers(n) {
         Some(n) => n.to_string(),
         None => {
@@ -17,7 +17,7 @@ pub fn number_in_words(n: i32) -> String {
     }
 }
 
-fn larger_numbers(n: i32, divisor: i32, s: &str) -> String {
+fn larger_numbers(n: i64, divisor: i64, s: &str) -> String {
     let rest = n % divisor;
     if rest == 0 {
         format!("{} {}", number_in_words(n / divisor), s)
@@ -28,7 +28,7 @@ fn larger_numbers(n: i32, divisor: i32, s: &str) -> String {
     }
 }
 
-fn base_numbers(n: i32) -> Option<&'static str> {
+fn base_numbers(n: i64) -> Option<&'static str> {
     match n {
         1 => Some("en"),
         2 => Some("to"),

@@ -13,7 +13,7 @@ use parameterized::parameterized;
     "fjorten tusen og femten", "en million", "seksten millioner atten tusen og nitten",
     "femtini milliarder seksti millioner sytti tusen og åtti"
 })]
-fn test_number_in_words(n: i32, expected: &str) {
+fn test_number_in_words(n: i64, expected: &str) {
     assert_eq!(expected, numbers::number_in_words(n));
 }
 
