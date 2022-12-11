@@ -1,9 +1,9 @@
 use parameterized::parameterized;
 
 #[parameterized(n = {
-    1, 2, 3, 20
+    1, 2, 3, 20, 21
 }, expected={
-    "en", "to", "tre", "tjue"
+    "en", "to", "tre", "tjue", "tjueen"
 })]
 fn test_number_in_words(n: i32, expected: &str) {
     assert_eq!(expected, number_in_words(n));
