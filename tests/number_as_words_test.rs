@@ -15,7 +15,9 @@ fn number_in_words(n: i32) -> String {
     match base_numbers(n) {
         Some(n) => n.to_string(),
         None => {
-            if n > 20 && n % 10 != 0 {
+            if n > 100 {
+                format!("{} og {}", number_in_words(n - n%100), number_in_words(n%100))
+            } else if n > 20 && n % 10 != 0 {
                 format!("{}{}", number_in_words(n - n%10), number_in_words(n%10))
             } else {
                 panic!("Don't know how to translate number {}", n)
@@ -33,8 +35,8 @@ fn base_numbers(n: i32) -> Option<&'static str> {
         5 => Some("fem"),
         20 => Some("tjue"),
         30 => Some("tretti"),
+        40 => Some("førti"),
         100 => Some("et hundre"),
-        140 => Some("et hundre og førti"),
         _ => None
     }
 }
