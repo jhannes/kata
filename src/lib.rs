@@ -3,25 +3,26 @@ pub fn number_in_words(n: i32) -> String {
         Some(n) => n.to_string(),
         None => {
             if n > 1000 {
-                if n % 1000 == 0 {
-                    format!("{} tusen", number_in_words(n / 1000))
-                } else if n % 1000 < 100 {
-                    format!("{} og {}", number_in_words(n - n%1000), number_in_words(n%1000))
-                } else {
-                    format!("{} {}", number_in_words(n - n%1000), number_in_words(n%1000))
-                }
+                larger_numbers(n, 1000, "tusen")
             } else if n > 100 {
-                if n % 100 == 0 {
-                    format!("{} hundre", number_in_words(n / 100))                
-                } else {
-                    format!("{} og {}", number_in_words(n - n%100), number_in_words(n%100))
-                }
+                larger_numbers(n, 100, "hundre")
             } else if n > 20 && n % 10 != 0 {
                 format!("{}{}", number_in_words(n - n%10), number_in_words(n%10))
             } else {
                 panic!("Don't know how to translate number {}", n)
             }
         }
+    }
+}
+
+fn larger_numbers(n: i32, divisor: i32, s: &str) -> String {
+    let rest = n % divisor;
+    if rest == 0 {
+        format!("{} {}", number_in_words(n / divisor), s)
+    } else if rest < 100 {
+        format!("{} og {}", number_in_words(n - rest), number_in_words(rest))
+    } else {
+        format!("{} {}", number_in_words(n - rest), number_in_words(rest))
     }
 }
 
