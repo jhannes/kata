@@ -58,10 +58,12 @@ fn base_numbers(n: i64) -> Option<&'static str> {
         60 => Some("seksti"),
         70 => Some("sytti"),
         80 => Some("åtti"),
+        90 => Some("nitti"),
         100 => Some("et hundre"),
         1000 => Some("et tusen"),
         1700 => Some("et tusen syv hundre"),
         1_000_000 => Some("en million"),
+        1_000_000_000 => Some("en milliard"),
         _ => None
     }
 }
