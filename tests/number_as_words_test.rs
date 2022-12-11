@@ -3,9 +3,11 @@ use parameterized::parameterized;
 #[parameterized(n = {
     1, 2, 3, 20, 21, 34,
     100, 145, 610, 617,
+    1711,
 }, expected={
     "en", "to", "tre", "tjue", "tjueen", "trettifire",
     "et hundre", "et hundre og førtifem", "seks hundre og ti", "seks hundre og sytten",
+    "et tusen syv hundre og elleve"
 })]
 fn test_number_in_words(n: i32, expected: &str) {
     assert_eq!(expected, number_in_words(n));
