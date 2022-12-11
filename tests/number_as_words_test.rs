@@ -30,9 +30,11 @@ fn base_numbers(n: i32) -> Option<&'static str> {
         2 => Some("to"),
         3 => Some("tre"),
         4 => Some("fire"),
+        5 => Some("fem"),
         20 => Some("tjue"),
         30 => Some("tretti"),
         100 => Some("et hundre"),
+        140 => Some("et hundre og førti"),
         _ => None
     }
 }
