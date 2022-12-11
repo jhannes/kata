@@ -10,12 +10,9 @@ fn test_number_in_words(n: i32, expected: &str) {
 }
 
 fn number_in_words(n: i32) -> String {
-    match n {
-        1 => "en".to_string(),
-        2 => "to".to_string(),
-        3 => "tre".to_string(),
-        20 => "tjue".to_string(),
-        _ => panic!("Unknown {}", n)
+    match base_numbers(n) {
+        Some(n) => n.to_string(),
+        None => panic!("Unknown {}", n)
     }
 }
 
@@ -25,6 +22,6 @@ fn base_numbers(n: i32) -> Option<&'static str> {
         2 => Some("to"),
         3 => Some("tre"),
         20 => Some("tjue"),
-        _ => None()
+        _ => None
     }
 }
