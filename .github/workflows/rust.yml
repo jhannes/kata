@@ -22,12 +22,11 @@ jobs:
           ~/.cargo
           ./target/debug/deps
         key: cargo-cache-{{ checksum "Cargo.toml" }}
-    - run: cargo install --path .
     - run: cargo install cargo-junit
     - name: Run tests
       run: cargo test --verbose
-    - run: cargo junit --name target/test-results.xml
+    - run: cargo junit --name test-results.xml
     - uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path: target/test-results.xml
+        path: test-results.xml
