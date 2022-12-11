@@ -22,6 +22,7 @@ fn base_numbers(n: i32) -> Option<&'static str> {
         2 => Some("to"),
         3 => Some("tre"),
         20 => Some("tjue"),
+        21 => Some("tjueen"),
         _ => None
     }
 }
