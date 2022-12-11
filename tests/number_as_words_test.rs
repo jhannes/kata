@@ -10,5 +10,9 @@ fn test_number_in_words(n: i32, expected: &str) {
 }
 
 fn number_in_words(n: i32) -> String {
-    "en".to_string()
+    match n {
+        1 => "en".to_string(),
+        2 => "to".to_string(),
+        _ => panic!("Unknown {}", n)
+    }
 }
