@@ -18,3 +18,13 @@ fn number_in_words(n: i32) -> String {
         _ => panic!("Unknown {}", n)
     }
 }
+
+fn base_numbers(n: i32) -> Option<&'static str> {
+    match n {
+        1 => Some("en"),
+        2 => Some("to"),
+        3 => Some("tre"),
+        20 => Some("tjue"),
+        _ => None()
+    }
+}
