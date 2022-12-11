@@ -1,6 +1,8 @@
-#[test]
-fn test_number_in_words() {
-    assert_eq!("en", number_in_words(1));
+use parameterized::parameterized;
+
+#[parameterized(n = {1}, expected={"en"})]
+fn test_number_in_words(n: i32, expected: &str) {
+    assert_eq!(expected, number_in_words(n));
 }
 
 fn number_in_words(n: i32) -> String {
