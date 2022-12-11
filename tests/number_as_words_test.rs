@@ -15,10 +15,10 @@ fn number_in_words(n: i32) -> String {
     match base_numbers(n) {
         Some(n) => n.to_string(),
         None => {
-            if n > 20 {
+            if n > 20 && n % 10 != 0 {
                 format!("{}{}", number_in_words(n - n%10), number_in_words(n%10))
             } else {
-                panic!("Unknown {}", n)
+                panic!("Don't know how to translate number {}", n)
             }
         }
     }
