@@ -18,7 +18,11 @@ fn number_in_words(n: i32) -> String {
         Some(n) => n.to_string(),
         None => {
             if n > 1000 {
-                format!("{} {}", number_in_words(n - n%1000), number_in_words(n%1000))
+                if n % 1000 == 0 {
+                    format!("{} tusen", number_in_words(n / 1000))
+                } else {
+                    format!("{} {}", number_in_words(n - n%1000), number_in_words(n%1000))
+                }
             } else if n > 100 {
                 if n % 100 == 0 {
                     format!("{} hundre", number_in_words(n / 100))                
@@ -43,8 +47,11 @@ fn base_numbers(n: i32) -> Option<&'static str> {
         5 => Some("fem"),
         6 => Some("seks"),
         7 => Some("syv"),
+        8 => Some("åtte"),
         10 => Some("ti"),
         11 => Some("elleve"),
+        12 => Some("tolv"),
+        13 => Some("tretten"),
         17 => Some("sytten"),
         20 => Some("tjue"),
         30 => Some("tretti"),
