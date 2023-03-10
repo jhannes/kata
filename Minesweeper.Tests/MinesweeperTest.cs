@@ -52,8 +52,8 @@ public class MinesweeperTest
     [Fact]
     void ShouldShowHint()
     {
-        new Minefield(new string[] { ".*." }).GetHints()
-            .Should().Equal(new string[] { "1*1" });
+        new Minefield(new string[] { "...", ".*.", "..." }).GetHints()
+            .Should().Equal(new string[] { "111", "1*1", "111" });
     }
 
     [Fact]
