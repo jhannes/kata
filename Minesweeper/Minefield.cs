@@ -23,7 +23,9 @@ namespace Minesweeper
                     }
                     else
                     {
-                        result[row] += "0";
+                        var hint = 0;
+                        if (CellIsMine(row, column+1)) hint++;
+                        result[row] += hint;
                     }
                 }
             }
@@ -32,6 +34,7 @@ namespace Minesweeper
 
         private bool CellIsMine(int row, int column)
         {
+            if (column >= input[row].Length) return false;
             return input[row][column] == '*';
         }
     }
