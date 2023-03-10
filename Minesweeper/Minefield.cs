@@ -24,10 +24,14 @@ namespace Minesweeper
                     else
                     {
                         var hint = 0;
+                        if (CellIsMine(row-1, column-1)) hint++;
+                        if (CellIsMine(row-1, column)) hint++;
+                        if (CellIsMine(row-1, column+1)) hint++;
                         if (CellIsMine(row, column+1)) hint++;
                         if (CellIsMine(row, column-1)) hint++;
-                        if (CellIsMine(row-1, column)) hint++;
+                        if (CellIsMine(row+1, column-1)) hint++;
                         if (CellIsMine(row+1, column)) hint++;
+                        if (CellIsMine(row+1, column+1)) hint++;
                         result[row] += hint;
                     }
                 }

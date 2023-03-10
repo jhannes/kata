@@ -4,7 +4,7 @@ using FluentAssertions;
 
 public class MinesweeperTest
 {
-    [Fact(Skip="Not ready for acceptance test yet")]
+    [Fact]
     void AcceptanceTest()
     {
         var input = new string[]
