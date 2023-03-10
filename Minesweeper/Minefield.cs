@@ -11,7 +11,10 @@ namespace Minesweeper
 
         public string[] GetHints()
         {
-            throw new NotImplementedException();
+            return new string[]
+            {
+                "0"
+            };
         }
     }
 }

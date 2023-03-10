@@ -31,14 +31,16 @@ public class MinesweeperTest
     [Fact]
     void ShouldDisplayEmptyBoard()
     {
-        var input = new string[]
-        {
-            "."
-        };
-        var output = new string[]
-        {
-            "0"
-        };
-        new Minefield(input).GetHints().Should().Equal(output);
+
+        new Minefield(new string[] { "." }).GetHints()
+            .Should().Equal(new string[] { "0" });
+    }
+
+    [Fact]
+    void ShouldReturnCorrectNumberOfLines()
+    {
+
+        new Minefield(new string[] { ".", ".", "." }).GetHints()
+            .Should().Equal(new string[] { "0", "0", "0" });
     }
 }
