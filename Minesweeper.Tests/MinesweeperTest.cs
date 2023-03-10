@@ -31,24 +31,21 @@ public class MinesweeperTest
     [Fact]
     void ShouldDisplayEmptyBoard()
     {
-
         new Minefield(new string[] { "." }).GetHints()
             .Should().Equal(new string[] { "0" });
     }
 
     [Fact]
-    void ShouldReturnCorrectNumberOfLines()
+    void ShouldReturnCorrectMinefieldShape()
     {
-
-        new Minefield(new string[] { ".", ".", "." }).GetHints()
-            .Should().Equal(new string[] { "0", "0", "0" });
+        new Minefield(new string[] { "....", "....", "...." }).GetHints()
+            .Should().Equal(new string[] { "0000", "0000", "0000" });
     }
 
     [Fact]
-    void ShouldReturnCorrectNumberOfColumns()
+    void ShouldShowMines()
     {
-
-        new Minefield(new string[] { "....", "....", "...." }).GetHints()
-            .Should().Equal(new string[] { "0000", "0000", "0000" });
+        new Minefield(new string[] { "***" }).GetHints()
+            .Should().Equal(new string[] { "***" });
     }
 }
