@@ -27,4 +27,18 @@ public class MinesweeperTest
         };
         new Minefield(input).GetHints().Should().Equal(output);
     }
+
+    [Fact]
+    void ShouldDisplayEmptyBoard()
+    {
+        var input = new string[]
+        {
+            "."
+        };
+        var output = new string[]
+        {
+            "0"
+        };
+        new Minefield(input).GetHints().Should().Equal(output);
+    }
 }
