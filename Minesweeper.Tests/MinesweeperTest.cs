@@ -55,4 +55,11 @@ public class MinesweeperTest
         new Minefield(new string[] { ".*." }).GetHints()
             .Should().Equal(new string[] { "1*1" });
     }
+
+    [Fact]
+    void ShouldShowHintsOnSameColumn()
+    {
+        new Minefield(new string[] { ".", "*", "." }).GetHints()
+            .Should().Equal(new string[] { "1","*", "1" });
+    }
 }
