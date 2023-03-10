@@ -17,10 +17,22 @@ namespace Minesweeper
                 result[row] = "";
                 for (int column = 0; column < input[row].Length; column++)
                 {
-                    result[row] += "0";
+                    if (CellIsMine(row, column))
+                    {
+                        result[row] += "*";
+                    }
+                    else
+                    {
+                        result[row] += "0";
+                    }
                 }
             }
             return result;
+        }
+
+        private bool CellIsMine(int row, int column)
+        {
+            return input[row][column] == '*';
         }
     }
 }
