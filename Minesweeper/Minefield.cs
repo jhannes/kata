@@ -11,10 +11,12 @@ namespace Minesweeper
 
         public string[] GetHints()
         {
-            return new string[]
+            var result = new String[input.Length];
+            for (int i = 0; i < result.Length; i++)
             {
-                "0"
-            };
+                result[i] = "0";
+            }
+            return result;
         }
     }
 }

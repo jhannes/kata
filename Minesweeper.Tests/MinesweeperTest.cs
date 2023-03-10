@@ -43,4 +43,12 @@ public class MinesweeperTest
         new Minefield(new string[] { ".", ".", "." }).GetHints()
             .Should().Equal(new string[] { "0", "0", "0" });
     }
+
+    [Fact]
+    void ShouldReturnCorrectNumberOfColumns()
+    {
+
+        new Minefield(new string[] { "....", "....", "...." }).GetHints()
+            .Should().Equal(new string[] { "0000", "0000", "0000" });
+    }
 }
