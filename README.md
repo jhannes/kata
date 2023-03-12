@@ -31,3 +31,15 @@ This exercise lends itself very well to Typescript with the concept of discrimin
 * [Instructions](https://github.com/jhannes/kata/tree/typescript/translate-messages/description)
 * [Starting point](https://github.com/jhannes/kata/tree/typescript/translate-messages/start)
 * [Example solution](https://github.com/jhannes/kata/tree/typescript/translate-messages/1) ([commit log](https://github.com/jhannes/kata/commits/typescript/translate-messages/1))
+
+## Minesweeper
+
+Based on the simple computer game minesweeper. Given a field with mines placed,
+calculate the hints to show players.
+
+This exercise requires some data structures, looping and conditional logic
+without conceptual complexity.
+
+* [Starting point](https://github.com/jhannes/kata/tree/csharp/minesweeper/start)
+* [Performance at Digitalkonferansen](https://github.com/jhannes/kata/tree/csharp/minesweeper/performance/2023-M03-digitalkonferansen)
+
