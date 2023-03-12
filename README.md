@@ -30,10 +30,11 @@ Download [dotnet SDK](https://dotnet.microsoft.com/en-us/download) and [Visual S
 
 1. `dotnet new sln`
 2. `dotnet new classlib -o NumbersInWords`
-3. `dotnet sln add ./NumbersInWords/NumbersInWords.csproj`
+3. `dotnet sln add NumbersInWords`
 4. `dotnet new xunit -o NumbersInWords.Tests`
-5. `dotnet sln add ./NumbersInWords.Tests/NumbersInWords.Tests.csproj`
-6. `dotnet add ./NumbersInWords.Tests/NumbersInWords.Tests.csproj reference ./NumbersInWords/NumbersInWords.csproj`
-7. `dotnet watch --project ./NumbersInWords.Test/NumbersInWords.Test.csproj test`
+5. `dotnet sln add NumbersInWords.Tests`
+6. `cd NumbersInWords.Tests`
+7. `dotnet add reference ../NumbersInWords`
+8. `dotnet watch test`
 
 
