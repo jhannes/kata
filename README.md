@@ -40,6 +40,13 @@ calculate the hints to show players.
 This exercise requires some data structures, looping and conditional logic
 without conceptual complexity.
 
+### Java
+
+* [Example solution](https://github.com/jhannes/kata/tree/java/minesweeper/1) ([commit log](https://github.com/jhannes/kata/commits/java/minesweeper/1))
+* [Performance at Høyskolen Kristiania](https://github.com/jhannes/kata/commits/java/minesweeper/performance/2022M08-kristiania)
+
+### C#
+
 * [Starting point](https://github.com/jhannes/kata/tree/csharp/minesweeper/start)
 * [Performance at Digitalkonferansen](https://github.com/jhannes/kata/tree/csharp/minesweeper/performance/2023-M03-digitalkonferansen)
 
