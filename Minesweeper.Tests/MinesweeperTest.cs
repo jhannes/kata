@@ -49,7 +49,7 @@ public class MinesweeperTest
             .Should().Equal(new string[] { "***" });
     }
 
-    [Fact]
+    [Fact]    
     void ShouldShowHint()
     {
         new Minefield(new string[] { "...", ".*.", "..." }).GetHints()

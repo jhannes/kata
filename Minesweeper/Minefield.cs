@@ -23,20 +23,25 @@ namespace Minesweeper
                     }
                     else
                     {
-                        var hint = 0;
-                        if (CellIsMine(row-1, column-1)) hint++;
-                        if (CellIsMine(row-1, column)) hint++;
-                        if (CellIsMine(row-1, column+1)) hint++;
-                        if (CellIsMine(row, column+1)) hint++;
-                        if (CellIsMine(row, column-1)) hint++;
-                        if (CellIsMine(row+1, column-1)) hint++;
-                        if (CellIsMine(row+1, column)) hint++;
-                        if (CellIsMine(row+1, column+1)) hint++;
-                        result[row] += hint;
+                        result[row] += CountMinesAroundCell(row, column);
                     }
                 }
             }
             return result;
+        }
+
+        private int CountMinesAroundCell(int row, int column)
+        {
+            var hint = 0;
+            if (CellIsMine(row - 1, column - 1)) hint++;
+            if (CellIsMine(row - 1, column)) hint++;
+            if (CellIsMine(row - 1, column + 1)) hint++;
+            if (CellIsMine(row, column + 1)) hint++;
+            if (CellIsMine(row, column - 1)) hint++;
+            if (CellIsMine(row + 1, column - 1)) hint++;
+            if (CellIsMine(row + 1, column)) hint++;
+            if (CellIsMine(row + 1, column + 1)) hint++;
+            return hint;
         }
 
         private bool CellIsMine(int row, int column)
