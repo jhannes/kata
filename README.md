@@ -50,3 +50,50 @@ without conceptual complexity.
 * [Starting point](https://github.com/jhannes/kata/tree/csharp/minesweeper/start)
 * [Performance at Digitalkonferansen](https://github.com/jhannes/kata/tree/csharp/minesweeper/performance/2023-M03-digitalkonferansen)
 
+## Starting points
+
+### C# with dotnet core
+
+Download [dotnet SDK](https://dotnet.microsoft.com/en-us/download) and [Visual Studio Code](https://code.visualstudio.com/).
+
+<details>
+
+1. `dotnet new sln` (In a new empty directory)
+2. `dotnet new classlib -o <project>`
+3. `dotnet sln add <project>`
+4. `dotnet new xunit -o <project>.Tests`
+5. `dotnet sln add <project>.Tests`
+6. `cd <project>.Tests`
+7. `dotnet add reference ../<project>`
+8. `dotnet watch test`
+
+</details>
+
+### Jest with Typescript
+
+Install [NodeJs](https://nodejs.org/)
+
+<details>
+
+1. `npm init -y` (In a new empty directory)
+2. `npm install --save-dev typescript jest ts-jest @types/jest`
+3. `npx tsc --init`
+4. `npx ts-jest config:init`
+5. `npm pkg set scripts.test="jest"`
+6. `npm pkg set scripts.test:watch="jest --watchAll"`
+7. Create `__tests__/<...>.test.ts` with `describe("...", () => { it("...", () => {})})`
+8. `npm run test:watch`
+
+</details>
+
+### Rust
+
+Install Rust from https://www.rust-lang.org/learn/get-started
+
+<details>
+
+1. Create project: `cargo init` (In a new empty directory)
+2. Create a test file as tests/..._test.rs
+3. Run tests `cargo watch -x test`
+
+</details>
