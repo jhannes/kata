@@ -18,23 +18,56 @@ const RANKS: Record<string, string> = {
   Q: "Queen",
 };
 
+type Suit = "Hearts" | "Diamonds" | "Clubs" | "Spades";
+
+type Card = {
+  rank: Rank;
+  suit: Suit;
+};
+
+function toSuit(cardString: string): Suit {
+  switch (cardString.substring(cardString.length - 1)) {
+    case "c":
+      return "Clubs";
+    case "d":
+      return "Diamonds";
+    case "h":
+      return "Hearts";
+    case "s":
+      return "Spades";
+    default:
+      throw new Error(`Illegal suit for ${cardString}`);
+  }
+}
+
 function toCard(cardString: string) {
-  let rankString = cardString.substring(0, cardString.length - 1);
-  return RANKS[rankString] || rankString;
+  const rankString = cardString.substring(0, cardString.length - 1);
+  return { rank: RANKS[rankString] || rankString, suit: toSuit(cardString) };
 }
 
 export class PokerHand {
-  cards: Rank[];
+  cards: Card[];
   frequencies: Record<Rank, number>;
   constructor(private hand: string) {
     this.cards = hand.split(" ").map(toCard);
     this.frequencies = Object.fromEntries(RANK_ORDER.map((r) => [r, 0]));
     for (const card of this.cards) {
-      this.frequencies[card]++;
+      this.frequencies[card.rank]++;
     }
   }
 
   description() {
+    let foundFlush = true;
+    for (const card of this.cards) {
+      if (card.suit !== this.cards[0].suit) {
+        foundFlush = false;
+        break;
+      }
+    }
+    if (foundFlush) {
+      return "Flush";
+    }
+
     let highCardIndex = RANK_ORDER.findIndex((r) => this.frequencies[r] === 1);
     let foundStraight = true;
     for (let i = 0; i < 5; i++) {
@@ -67,9 +100,9 @@ export class PokerHand {
     }
 
     const highestCard = this.cards.sort(
-      (a, b) => RANK_ORDER.indexOf(a) - RANK_ORDER.indexOf(b),
+      (a, b) => RANK_ORDER.indexOf(a.rank) - RANK_ORDER.indexOf(b.rank),
     )[0];
-    return "High card (" + highestCard + ")";
+    return "High card (" + highestCard.rank + ")";
   }
 }
 
