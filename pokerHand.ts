@@ -16,6 +16,7 @@ const RANK_ORDER = [
 const RANKS: Record<string, string> = {
   K: "King",
   Q: "Queen",
+  J: "Jack",
 };
 
 type Suit = "Hearts" | "Diamonds" | "Clubs" | "Spades";
@@ -60,6 +61,20 @@ export class PokerHand {
   }
 
   description() {
+    let housePair = undefined,
+        houseTriple = undefined;
+    for (const rank of RANK_ORDER) {
+      if (this.frequencies[rank] === 3) {
+        houseTriple = rank;
+      } else if (this.frequencies[rank] === 2) {
+        housePair = rank;
+      }
+    }
+    if (housePair && houseTriple) {
+      return `House of ${houseTriple}s and ${housePair}s`
+    }
+
+
     let foundFlush = true;
     for (const card of this.cards) {
       if (card.suit !== this.cards[0].suit) {

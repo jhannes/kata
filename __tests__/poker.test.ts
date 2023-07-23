@@ -20,4 +20,5 @@ describe("poker hand", () => {
   itIdentifies("Three of a kind (10)", "10c 4d 10h 10h Qd");
   itIdentifies("Straight (10 high)", "10c 9d 8c 6h 7d");
   itIdentifies("Flush", "10h 4h 9h 3h Qh");
+  itIdentifies("House of 10s and Jacks", "10h 10c Jh 10d Jh");
 });
