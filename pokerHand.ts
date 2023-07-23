@@ -13,6 +13,7 @@ const RANK_ORDER = [
   "2",
 ];
 type Rank = (typeof RANK_ORDER)[number];
+
 const RANKS: Record<string, string> = {
   A: "Ace",
   K: "King",
@@ -22,11 +23,17 @@ const RANKS: Record<string, string> = {
 
 type Suit = "Hearts" | "Diamonds" | "Clubs" | "Spades";
 
-type Card = {
-  rank: Rank;
-  rankOrder: number;
-  suit: Suit;
-};
+class Card {
+  public rank: Rank;
+  public rankOrder: number;
+  public suit: Suit;
+  constructor(cardString: string) {
+    const rankString = cardString.substring(0, cardString.length - 1);
+    this.rank = RANKS[rankString] || rankString;
+    this.rankOrder = RANK_ORDER.indexOf(this.rank);
+    this.suit = toSuit(cardString);
+  }
+}
 
 function toSuit(cardString: string): Suit {
   switch (cardString.substring(cardString.length - 1)) {
@@ -43,18 +50,11 @@ function toSuit(cardString: string): Suit {
   }
 }
 
-function toCard(cardString: string) {
-  const rankString = cardString.substring(0, cardString.length - 1);
-  const rank = RANKS[rankString] || rankString;
-  const rankOrder = RANK_ORDER.indexOf(rank);
-  return { rank, rankOrder, suit: toSuit(cardString) };
-}
-
 export class PokerHand {
   cards: Card[];
   frequencies: Record<Rank, number>;
   constructor(private hand: string) {
-    this.cards = hand.split(" ").map(toCard);
+    this.cards = hand.split(" ").map((c) => new Card(c));
     this.frequencies = Object.fromEntries(RANK_ORDER.map((r) => [r, 0]));
     for (const card of this.cards) {
       this.frequencies[card.rank]++;
