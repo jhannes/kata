@@ -12,8 +12,9 @@ const RANK_ORDER = [
   "4",
   "2",
 ];
-type Rank = typeof RANK_ORDER[number];
+type Rank = (typeof RANK_ORDER)[number];
 const RANKS: Record<string, string> = {
+  A: "Ace",
   K: "King",
   Q: "Queen",
   J: "Jack",
@@ -64,6 +65,7 @@ export class PokerHand {
     const flush = this.checkFlush();
     const straight = this.checkStraight();
 
+    if (flush && straight === "Ace") return "Royal straight flush";
     if (flush && straight) return "Straight flush";
 
     const fourOfKind = this.findOfFrequency(4);
@@ -85,13 +87,11 @@ export class PokerHand {
 
     if (pair) return `Pair (${pair})`;
 
-    const highestCard = this.cards.sort(
-      (a, b) => a.rankOrder - b.rankOrder,
-    )[0];
+    const highestCard = this.cards.sort((a, b) => a.rankOrder - b.rankOrder)[0];
     return "High card (" + highestCard.rank + ")";
   }
 
-  private checkFlush(): Suit|undefined {
+  private checkFlush(): Suit | undefined {
     for (const card of this.cards) {
       if (card.suit !== this.cards[0].suit) {
         return;
@@ -100,8 +100,10 @@ export class PokerHand {
     return this.cards[0].suit;
   }
 
-  private checkStraight(): Rank|undefined {
-    const highCardIndex = RANK_ORDER.findIndex((r) => this.frequencies[r] === 1);
+  private checkStraight(): Rank | undefined {
+    const highCardIndex = RANK_ORDER.findIndex(
+      (r) => this.frequencies[r] === 1,
+    );
     for (let i = 0; i < 5; i++) {
       if (this.frequencies[RANK_ORDER[highCardIndex + i]] !== 1) {
         return;
@@ -112,7 +114,7 @@ export class PokerHand {
 
   private checkTwoPairs() {
     let firstPair = undefined,
-        secondPair = undefined;
+      secondPair = undefined;
     for (const card of RANK_ORDER) {
       if (this.frequencies[card] === 2 && !firstPair) {
         firstPair = card;
