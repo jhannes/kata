@@ -11,4 +11,5 @@ describe("poker hand", () => {
   itIdentifies("High card (Queen)", "2c Qd 10c 5h 7d");
   itIdentifies("High card (10)", "2c 4d 10c 5h 7d");
   itIdentifies("Pair (10)", "2c 4d 10c 10h Qd");
+  itIdentifies("Two pairs (10 and 4)", "2c 4d 10c 10h 4d");
 });
