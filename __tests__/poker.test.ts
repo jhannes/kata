@@ -1,12 +1,12 @@
-import {pokerHand} from "../pokerHand";
-var _jestMatcherUtils = require('jest-matcher-utils');
+import {PokerHand} from "../pokerHand";
+const _jestMatcherUtils = require('jest-matcher-utils');
 
 function itIdentifies(expected: string, hand: string) {
   it("identifies " + expected, () => {
-    let actual = pokerHand(hand);
-    if (actual !== expected) {
-      const diff = _jestMatcherUtils.printDiffOrStringify(expected, actual, "Expected", "Received", true);
-      throw new Error(`Poker hand: ${_jestMatcherUtils.printExpected(hand)}\n\n${diff}\n`)
+    const actual = new PokerHand(hand);
+    if (actual.description() !== expected) {
+      const diff = _jestMatcherUtils.printDiffOrStringify(expected, actual.description(), "Expected", "Received", true);
+      throw new Error(`Poker hand: ${_jestMatcherUtils.printExpected(actual)}\n\n${diff}\n`)
     }
   });
 }
