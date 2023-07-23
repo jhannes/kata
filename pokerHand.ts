@@ -20,6 +20,9 @@ export function pokerHand(hand: string) {
 
   let firstPair = undefined, secondPair = undefined;
   for (const card of RANK_ORDER) {
+    if (frequencies[card] === 3) {
+      return `Three of a kind (${card})`
+    }
     if (frequencies[card] === 2 && !firstPair) {
       firstPair = card;
     } else if (frequencies[card] === 2 && !secondPair) {
