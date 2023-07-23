@@ -61,49 +61,53 @@ export class PokerHand {
   }
 
   description() {
-    let housePair = undefined,
-        houseTriple = undefined;
-    for (const rank of RANK_ORDER) {
-      if (this.frequencies[rank] === 3) {
-        houseTriple = rank;
-      } else if (this.frequencies[rank] === 2) {
-        housePair = rank;
-      }
-    }
-    if (housePair && houseTriple) {
-      return `House of ${houseTriple}s and ${housePair}s`
-    }
+    const threeOfKind = this.findOfFrequency(3);
+    const pair = this.findOfFrequency(2);
 
+    if (threeOfKind && pair) return `House of ${threeOfKind}s and ${pair}s`;
 
-    let foundFlush = true;
+    const flush = this.checkFlush();
+    if (flush) return flush;
+
+    const straight = this.checkStraight();
+    if (straight) return straight;
+
+    if (threeOfKind) return `Three of a kind (${threeOfKind})`;
+
+    const twoPairs = this.checkTwoPairs();
+    if (twoPairs) return twoPairs;
+
+    if (pair) return `Pair (${pair})`;
+
+    const highestCard = this.cards.sort(
+      (a, b) => a.rankOrder - b.rankOrder,
+    )[0];
+    return "High card (" + highestCard.rank + ")";
+  }
+
+  private checkFlush() {
     for (const card of this.cards) {
       if (card.suit !== this.cards[0].suit) {
-        foundFlush = false;
-        break;
+        return;
       }
     }
-    if (foundFlush) {
-      return "Flush";
-    }
+    return "Flush";
+  }
 
-    let highCardIndex = RANK_ORDER.findIndex((r) => this.frequencies[r] === 1);
-    let foundStraight = true;
+  private checkStraight() {
+    const highCardIndex = RANK_ORDER.findIndex((r) => this.frequencies[r] === 1);
     for (let i = 0; i < 5; i++) {
       if (this.frequencies[RANK_ORDER[highCardIndex + i]] !== 1) {
-        foundStraight = false;
-        break;
+        return;
       }
     }
-    if (foundStraight) {
-      return `Straight (${RANK_ORDER[highCardIndex]} high)`;
-    }
+    return `Straight (${RANK_ORDER[highCardIndex]} high)`;
+  }
 
+  private checkTwoPairs() {
     let firstPair = undefined,
-      secondPair = undefined;
+        secondPair = undefined;
     for (const card of RANK_ORDER) {
-      if (this.frequencies[card] === 3) {
-        return `Three of a kind (${card})`;
-      }
       if (this.frequencies[card] === 2 && !firstPair) {
         firstPair = card;
       } else if (this.frequencies[card] === 2 && !secondPair) {
@@ -113,13 +117,14 @@ export class PokerHand {
 
     if (secondPair) {
       return `Two pairs (${firstPair} and ${secondPair})`;
-    } else if (firstPair) {
-      return `Pair (${firstPair})`;
     }
+  }
 
-    const highestCard = this.cards.sort(
-      (a, b) => a.rankOrder - b.rankOrder,
-    )[0];
-    return "High card (" + highestCard.rank + ")";
+  private findOfFrequency(frequency: number) {
+    for (const rank of RANK_ORDER) {
+      if (this.frequencies[rank] === frequency) {
+        return rank;
+      }
+    }
   }
 }
