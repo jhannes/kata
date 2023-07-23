@@ -1,8 +1,9 @@
-const RANK_ORDER = ["Ace", "King", "Queen", "Jack", "10"];
+const RANK_ORDER = ["Ace", "King", "Queen", "Jack", "10", "4"];
 const RANKS: Record<string, string> = {
   K: "King",
   Q: "Queen",
   "10": "10",
+  "4": "4"
 };
 
 function toCard(cardString: string) {
@@ -17,10 +18,19 @@ export function pokerHand(hand: string) {
     frequencies[card]++;
   }
 
-  for (const card in frequencies) {
-    if (frequencies[card] === 2) {
-      return `Pair (${card})`;
+  let firstPair = undefined, secondPair = undefined;
+  for (const card of RANK_ORDER) {
+    if (frequencies[card] === 2 && !firstPair) {
+      firstPair = card;
+    } else if (frequencies[card] === 2 && !secondPair) {
+      secondPair = card;
     }
+  }
+
+  if (secondPair) {
+    return `Two pairs (${firstPair} and ${secondPair})`
+  } else if (firstPair) {
+    return `Pair (${firstPair})`
   }
 
   const highestCard = cards.sort(
