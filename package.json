@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "prettier:check": "prettier --check .",
+    "prettier": "prettier --write ."
   },
   "author": "",
   "license": "ISC",

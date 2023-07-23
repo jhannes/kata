@@ -48,4 +48,3 @@ This is a fairly open-ended task. When you have solved the rules for the final h
 ## Trivia
 
 The term "totally Texas" in Norwegian colloquial speech means "crazy".
-
