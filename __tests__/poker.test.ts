@@ -1,6 +1,6 @@
 
 const RANK_ORDER = [
-    "Ace", "King", "Queen", "Jack"
+    "Ace", "King", "Queen", "Jack", "10"
 ]
 
 const RANKS: Record<string, string> = {
@@ -9,9 +9,13 @@ const RANKS: Record<string, string> = {
     '10': "10",
 }
 
+function toCard(cardString: string) {
+    return RANKS[cardString.substring(0, cardString.length-1)];
+}
+
 
 function pokerHand(hand: string) {
-    const cards = hand.split(" ").map(c => RANKS[c.substring(0, 1)]);
+    const cards = hand.split(" ").map(toCard);
     const highestCard = cards.sort((a, b) => RANK_ORDER.indexOf(a) - RANK_ORDER.indexOf(b))[0];
     return "High card (" + highestCard + ")"
 }
@@ -25,4 +29,5 @@ function itIdentifies(expected: string, hand: string) {
 describe("poker hand", () => {
     itIdentifies("High card (King)", "Kc Qd 10c 5h 7d");
     itIdentifies("High card (Queen)", "2c Qd 10c 5h 7d");
+    itIdentifies("High card (10)", "2c 4d 10c 5h 7d");
 })
