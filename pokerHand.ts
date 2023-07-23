@@ -61,6 +61,9 @@ export class PokerHand {
   }
 
   description() {
+    const fourOfKind = this.findOfFrequency(4);
+    if (fourOfKind) return `Four of a kind (${fourOfKind})`;
+
     const threeOfKind = this.findOfFrequency(3);
     const pair = this.findOfFrequency(2);
 
