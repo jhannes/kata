@@ -16,6 +16,18 @@ function toCard(cardString: string) {
 
 function pokerHand(hand: string) {
     const cards = hand.split(" ").map(toCard);
+
+    const frequencies = Object.fromEntries(RANK_ORDER.map(r => [r, 0]));
+    for (const card of cards) {
+        frequencies[card]++;
+    }
+
+    for (const card in frequencies) {
+        if (frequencies[card] === 2) {
+            return `Pair (${card})`
+        }
+    }
+
     const highestCard = cards.sort((a, b) => RANK_ORDER.indexOf(a) - RANK_ORDER.indexOf(b))[0];
     return "High card (" + highestCard + ")"
 }
