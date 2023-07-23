@@ -22,6 +22,7 @@ type Suit = "Hearts" | "Diamonds" | "Clubs" | "Spades";
 
 type Card = {
   rank: Rank;
+  rankOrder: number;
   suit: Suit;
 };
 
@@ -42,7 +43,9 @@ function toSuit(cardString: string): Suit {
 
 function toCard(cardString: string) {
   const rankString = cardString.substring(0, cardString.length - 1);
-  return { rank: RANKS[rankString] || rankString, suit: toSuit(cardString) };
+  const rank = RANKS[rankString] || rankString;
+  const rankOrder = RANK_ORDER.indexOf(rank);
+  return { rank, rankOrder, suit: toSuit(cardString) };
 }
 
 export class PokerHand {
@@ -100,12 +103,8 @@ export class PokerHand {
     }
 
     const highestCard = this.cards.sort(
-      (a, b) => RANK_ORDER.indexOf(a.rank) - RANK_ORDER.indexOf(b.rank),
+      (a, b) => a.rankOrder - b.rankOrder,
     )[0];
     return "High card (" + highestCard.rank + ")";
   }
-}
-
-export function pokerHand(hand: string) {
-  return new PokerHand(hand).description();
 }
