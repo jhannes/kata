@@ -4,7 +4,10 @@ function pokerHand(hand: string) {
 }
 
 describe("poker hand", () => {
-    it("shows high card", () => {
+    it("identifies high card (King)", () => {
         expect(pokerHand("Kc Qd 10c 5h 7d")).toEqual("High card (King)");
+    })
+    it("identifies high card (Queen)", () => {
+        expect(pokerHand("2c Qd 10c 5h 7d")).toEqual("High card (Queen)");
     })
 })
