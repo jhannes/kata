@@ -1,5 +1,7 @@
 
-function pokerHand(hand: string) {}
+function pokerHand(hand: string) {
+    return "High card (King)"
+}
 
 describe("poker hand", () => {
     it("shows high card", () => {
