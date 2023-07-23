@@ -1,13 +1,12 @@
-const RANK_ORDER = ["Ace", "King", "Queen", "Jack", "10", "4"];
+const RANK_ORDER = ["Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "2"];
 const RANKS: Record<string, string> = {
   K: "King",
   Q: "Queen",
-  "10": "10",
-  "4": "4"
 };
 
 function toCard(cardString: string) {
-  return RANKS[cardString.substring(0, cardString.length - 1)];
+  let rankString = cardString.substring(0, cardString.length - 1);
+  return RANKS[rankString] || rankString;
 }
 
 export function pokerHand(hand: string) {
@@ -16,6 +15,18 @@ export function pokerHand(hand: string) {
   const frequencies = Object.fromEntries(RANK_ORDER.map((r) => [r, 0]));
   for (const card of cards) {
     frequencies[card]++;
+  }
+
+  let highCardIndex = RANK_ORDER.findIndex(r => frequencies[r] === 1);
+  let foundStraight = true;
+  for (let i = 0; i < 5; i++) {
+    if (frequencies[RANK_ORDER[highCardIndex+i]] !== 1) {
+      foundStraight = false;
+      break;
+    }
+  }
+  if (foundStraight) {
+    return `Straight (${RANK_ORDER[highCardIndex]} high)`
   }
 
   let firstPair = undefined, secondPair = undefined;
