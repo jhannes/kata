@@ -16,11 +16,13 @@ function pokerHand(hand: string) {
     return "High card (" + highestCard + ")"
 }
 
+function itIdentifies(expected: string, hand: string) {
+    it("identifies " +expected, () => {
+        expect(pokerHand(hand)).toEqual(expected);
+    })
+}
+
 describe("poker hand", () => {
-    it("identifies high card (King)", () => {
-        expect(pokerHand("Kc Qd 10c 5h 7d")).toEqual("High card (King)");
-    })
-    it("identifies high card (Queen)", () => {
-        expect(pokerHand("2c Qd 10c 5h 7d")).toEqual("High card (Queen)");
-    })
+    itIdentifies("High card (King)", "Kc Qd 10c 5h 7d");
+    itIdentifies("High card (Queen)", "2c Qd 10c 5h 7d");
 })
