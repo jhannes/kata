@@ -7,30 +7,32 @@ describe("roman converter", () => {
     [5, "V"],
     [6, "VI"],
     [9, "IX"],
+    [10, "X"],
   ])("converts from %d to %s in roman", (n, expectedResult) => {
     expect(toRoman(n)).toBe(expectedResult);
   });
 });
 
 function toRoman(n: number) {
-  const rest = {
+  const result = {
     number: n,
     roman: "",
   };
 
   function convertRomanDigit(digitValue: number, digit: string) {
-    if (rest.number >= digitValue) {
-      rest.number -= digitValue;
-      rest.roman += digit;
+    if (result.number >= digitValue) {
+      result.number -= digitValue;
+      result.roman += digit;
     }
   }
 
+  convertRomanDigit(10, "X");
   convertRomanDigit(9, "IX");
   convertRomanDigit(5, "V");
   convertRomanDigit(4, "IV");
-  while (rest.number >= 1) {
-    rest.roman += "I";
-    rest.number -= 1;
+  while (result.number >= 1) {
+    result.roman += "I";
+    result.number -= 1;
   }
-  return rest.roman;
+  return result.roman;
 }
