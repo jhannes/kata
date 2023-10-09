@@ -9,8 +9,11 @@ describe("roman converter", () => {
 });
 
 function toRoman(n: number) {
+  let result = "";
   if (n === 2) {
-    return "II";
+    result = "II";
+  } else if (n === 1) {
+    result = "I";
   }
-  return "I";
+  return result;
 }
