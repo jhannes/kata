@@ -3,3 +3,7 @@ describe("roman converter", () => {
     expect(toRoman(1)).toBe("I");
   });
 });
+
+function toRoman(n: number) {
+  return undefined;
+}
