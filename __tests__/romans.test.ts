@@ -8,6 +8,7 @@ describe("roman converter", () => {
     [6, "VI"],
     [9, "IX"],
     [10, "X"],
+    [20, "XX"],
   ])("converts from %d to %s in roman", (n, expectedResult) => {
     expect(toRoman(n)).toBe(expectedResult);
   });
