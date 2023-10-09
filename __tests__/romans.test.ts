@@ -13,7 +13,6 @@ describe("roman converter", () => {
 });
 
 function toRoman(n: number) {
-  let result = "";
   const rest = {
     number: n,
     roman: "",
@@ -28,22 +27,10 @@ function toRoman(n: number) {
 
   convertRomanDigit(9, "IX");
   convertRomanDigit(5, "V");
-
-  if (n >= 9) {
-    result += "IX";
-    n -= 9;
+  convertRomanDigit(4, "IV");
+  while (rest.number >= 1) {
+    rest.roman += "I";
+    rest.number -= 1;
   }
-  if (n >= 5) {
-    result += "V";
-    n -= 5;
-  }
-  if (n >= 4) {
-    result += "IV";
-    n -= 4;
-  }
-  while (n >= 1) {
-    result += "I";
-    n -= 1;
-  }
-  return result;
+  return rest.roman;
 }
