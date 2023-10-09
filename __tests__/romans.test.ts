@@ -14,12 +14,9 @@ describe("roman converter", () => {
 
 function toRoman(n: number) {
   let result = "";
-  if (n === 3) {
-    result = "III";
-  } else if (n === 2) {
-    result = "II";
-  } else if (n === 1) {
-    result = "I";
+  while (n >= 1) {
+    result += "I";
+    n -= 1;
   }
   return result;
 }
