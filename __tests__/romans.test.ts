@@ -14,6 +14,25 @@ describe("roman converter", () => {
 
 function toRoman(n: number) {
   let result = "";
+  const rest = {
+    number: n,
+    roman: "",
+  };
+
+  function convertRomanDigit(digitValue: number, digit: string) {
+    if (rest.number >= digitValue) {
+      rest.number -= digitValue;
+      rest.roman += digit;
+    }
+  }
+
+  convertRomanDigit(9, "IX");
+  convertRomanDigit(5, "V");
+
+  if (n >= 9) {
+    result += "IX";
+    n -= 9;
+  }
   if (n >= 5) {
     result += "V";
     n -= 5;
