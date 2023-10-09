@@ -6,6 +6,14 @@ describe("roman converter", () => {
   ])("converts from %d to %s in roman", (n, expectedResult) => {
     expect(toRoman(n)).toBe(expectedResult);
   });
+
+  it.each([
+    [444, "CDXLIV"],
+    [999, "CMXCIX"],
+    [3888, "MMMDCCCLXXXVIII"],
+  ])("converts to %d from %s in roman", (expected, roman) => {
+    expect(fromRoman(roman)).toBe(expected);
+  });
 });
 
 const ROMAN_NUMBERS = [
@@ -30,6 +38,18 @@ function toRoman(n: number) {
     while (n >= number.value) {
       n -= number.value;
       result += number.digit;
+    }
+  }
+
+  return result;
+}
+
+function fromRoman(roman: string) {
+  let result = 0;
+  for (const number of ROMAN_NUMBERS) {
+    while (roman.startsWith(number.digit)) {
+      roman = roman.substring(number.digit.length);
+      result += number.value;
     }
   }
 
