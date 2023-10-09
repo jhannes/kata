@@ -1,17 +1,8 @@
 describe("roman converter", () => {
-  it("converts from 1 to I in roman", () => {
-    expect(toRoman(1)).toBe("I");
-  });
-
-  it("converts from 2 to II in roman", () => {
-    expect(toRoman(2)).toBe("II");
-  });
-
-  it("converts from 3 to III in roman", () => {
-    expect(toRoman(3)).toBe("III");
-  });
-
   it.each([
+    [1, "I"],
+    [2, "II"],
+    [3, "III"],
     [4, "IV"],
     [5, "V"],
   ])("converts from %d to %s in roman", (n, expectedResult) => {
@@ -22,10 +13,12 @@ describe("roman converter", () => {
 function toRoman(n: number) {
   let result = "";
   if (n === 5) {
-    return "V";
+    result += "V";
+    n -= 5;
   }
   if (n === 4) {
-    return "IV";
+    result += "IV";
+    n -= 4;
   }
   while (n >= 1) {
     result += "I";
