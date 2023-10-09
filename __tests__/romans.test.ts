@@ -5,6 +5,7 @@ describe("roman converter", () => {
     [3, "III"],
     [4, "IV"],
     [5, "V"],
+    [6, "VI"],
   ])("converts from %d to %s in roman", (n, expectedResult) => {
     expect(toRoman(n)).toBe(expectedResult);
   });
@@ -12,11 +13,11 @@ describe("roman converter", () => {
 
 function toRoman(n: number) {
   let result = "";
-  if (n === 5) {
+  if (n >= 5) {
     result += "V";
     n -= 5;
   }
-  if (n === 4) {
+  if (n >= 4) {
     result += "IV";
     n -= 4;
   }
