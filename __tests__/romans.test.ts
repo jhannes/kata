@@ -21,7 +21,7 @@ function toRoman(n: number) {
   };
 
   function convertRomanDigit(digitValue: number, digit: string) {
-    if (result.number >= digitValue) {
+    while (result.number >= digitValue) {
       result.number -= digitValue;
       result.roman += digit;
     }
