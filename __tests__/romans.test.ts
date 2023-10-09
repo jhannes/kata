@@ -17,32 +17,30 @@ describe("roman converter", () => {
   });
 });
 
-function toRoman(n: number) {
-  const result = {
-    number: n,
-    roman: "",
-  };
+const ROMAN_NUMBERS = [
+  { value: 1000, digit: "M" },
+  { value: 900, digit: "CM" },
+  { value: 500, digit: "D" },
+  { value: 400, digit: "CD" },
+  { value: 100, digit: "C" },
+  { value: 90, digit: "XC" },
+  { value: 50, digit: "L" },
+  { value: 40, digit: "XL" },
+  { value: 10, digit: "X" },
+  { value: 9, digit: "IX" },
+  { value: 5, digit: "V" },
+  { value: 4, digit: "IV" },
+  { value: 1, digit: "I" },
+];
 
-  function convertRomanDigit(digitValue: number, digit: string) {
-    while (result.number >= digitValue) {
-      result.number -= digitValue;
-      result.roman += digit;
+function toRoman(n: number) {
+  let result = "";
+  for (const number of ROMAN_NUMBERS) {
+    while (n >= number.value) {
+      n -= number.value;
+      result += number.digit;
     }
   }
 
-  convertRomanDigit(1000, "M");
-  convertRomanDigit(900, "CM");
-  convertRomanDigit(500, "D");
-  convertRomanDigit(400, "CD");
-  convertRomanDigit(100, "C");
-  convertRomanDigit(90, "XC");
-  convertRomanDigit(50, "L");
-  convertRomanDigit(40, "XL");
-  convertRomanDigit(10, "X");
-  convertRomanDigit(9, "IX");
-  convertRomanDigit(5, "V");
-  convertRomanDigit(4, "IV");
-  convertRomanDigit(1, "I");
-
-  return result.roman;
+  return result;
 }
