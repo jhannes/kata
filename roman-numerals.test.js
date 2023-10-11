@@ -1,18 +1,24 @@
 function toRoman(number) {
   let result = "";
-  if (number >= 5) {
-    result += "V";
-    number -= 5;
+  const state = {
+    number,
+    result,
+  };
+
+  function convertRomanDigit(digit, digitValue) {
+    if (state.number >= digitValue) {
+      state.result += digit;
+      state.number -= digitValue;
+    }
   }
-  if (number === 4) {
-    result += "IV";
-    number -= 4;
+  convertRomanDigit("V", 5);
+  convertRomanDigit("IV", 4);
+
+  while (state.number >= 1) {
+    state.result += "I";
+    state.number -= 1;
   }
-  while (number >= 1) {
-    result += "I";
-    number -= 1;
-  }
-  return result;
+  return state.result;
 }
 
 describe("roman numeral converter", () => {
@@ -23,6 +29,7 @@ describe("roman numeral converter", () => {
     [4, "IV"],
     [5, "V"],
     [6, "VI"],
+    [8, "VIII"],
   ])("converts number %d to roman %s", (number, expected) => {
     expect(toRoman(number)).toBe(expected);
   });
