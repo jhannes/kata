@@ -1,4 +1,4 @@
-# Coding exercises for teaching programmering skills
+# Coding exercises for teaching programming skills
 
 
 ## Number as words
@@ -76,13 +76,27 @@ Install [NodeJs](https://nodejs.org/)
 <details>
 
 1. `npm init -y` (In a new empty directory)
-2. `npm install --save-dev typescript jest ts-jest @types/jest`
+2. `npm install --save-dev typescript jest ts-jest @types/jest prettier`
 3. `npx tsc --init`
 4. `npx ts-jest config:init`
 5. `npm pkg set scripts.test="jest"`
 6. `npm pkg set scripts.test:watch="jest --watchAll"`
 7. Create `__tests__/<...>.test.ts` with `describe("...", () => { it("...", () => {})})`
 8. `npm run test:watch`
+
+</details>
+
+### Jest with JavaScript
+
+Install [NodeJs](https://nodejs.org/)
+
+<details>
+
+1. `npm init -y` (In a new empty directory)
+2. `npm install --save-dev jest @types/jest prettier`
+3. `npm pkg set scripts.test="jest"`
+4. Create `__tests__/<...>.test.js` with `describe("...", () => { it("...", () => {})})`
+5. `npm run test -- --watch`
 
 </details>
 
