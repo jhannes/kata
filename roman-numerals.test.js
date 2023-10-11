@@ -14,9 +14,11 @@ function toRoman(number) {
   convertRomanDigit("M", 1000);
   convertRomanDigit("CM", 900);
   convertRomanDigit("D", 500);
+  convertRomanDigit("CD", 400);
   convertRomanDigit("C", 100);
   convertRomanDigit("XC", 90);
   convertRomanDigit("L", 50);
+  convertRomanDigit("XL", 40);
   convertRomanDigit("X", 10);
   convertRomanDigit("IX", 9);
   convertRomanDigit("V", 5);
@@ -43,6 +45,7 @@ describe("roman numeral converter", () => {
     [20, "XX"],
     [3888, "MMMDCCCLXXXVIII"],
     [999, "CMXCIX"],
+    [444, "CDXLIV"],
   ])("converts number %d to roman %s", (number, expected) => {
     expect(toRoman(number)).toBe(expected);
   });
