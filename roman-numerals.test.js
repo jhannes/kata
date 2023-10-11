@@ -22,6 +22,7 @@ describe("roman numeral converter", () => {
     [3, "III"],
     [4, "IV"],
     [5, "V"],
+    [6, "VI"],
   ])("converts number %d to roman %s", (number, expected) => {
     expect(toRoman(number)).toBe(expected);
   });
