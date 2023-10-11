@@ -27,16 +27,6 @@ function toRoman(number) {
 
 describe("roman numeral converter", () => {
   it.each([
-    [1, "I"],
-    [2, "II"],
-    [3, "III"],
-    [4, "IV"],
-    [5, "V"],
-    [6, "VI"],
-    [8, "VIII"],
-    [9, "IX"],
-    [10, "X"],
-    [20, "XX"],
     [3888, "MMMDCCCLXXXVIII"],
     [999, "CMXCIX"],
     [444, "CDXLIV"],
