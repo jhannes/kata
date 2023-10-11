@@ -6,7 +6,7 @@ function toRoman(number) {
   };
 
   function convertRomanDigit(digit, digitValue) {
-    if (state.number >= digitValue) {
+    while (state.number >= digitValue) {
       state.result += digit;
       state.number -= digitValue;
     }
