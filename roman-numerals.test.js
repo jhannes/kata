@@ -1,13 +1,8 @@
 function toRoman(number) {
-  let result;
-  if (number === 3) {
-    result = "III";
-  }
-  if (number === 2) {
-    result = "II";
-  }
-  if (number === 1) {
-    result = "I";
+  let result = "";
+  while (number >= 1) {
+    result += "I";
+    number -= 1;
   }
   return result;
 }
