@@ -23,11 +23,8 @@ function toRoman(number) {
   convertRomanDigit("IX", 9);
   convertRomanDigit("V", 5);
   convertRomanDigit("IV", 4);
+  convertRomanDigit("I", 1);
 
-  while (state.number >= 1) {
-    state.result += "I";
-    state.number -= 1;
-  }
   return state.result;
 }
 
