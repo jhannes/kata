@@ -1,5 +1,9 @@
 function toRoman(number) {
   let result = "";
+  if (number === 5) {
+    result += "V";
+    number -= 5;
+  }
   if (number === 4) {
     result += "IV";
     number -= 4;
