@@ -21,7 +21,7 @@ describe("roman numeral converter", () => {
   it("converts number 3 to roman III", () => {
     expect(toRoman(3)).toBe("III");
   });
-  it("converts number 4 to roman IV", () => {
-    expect(toRoman(4)).toBe("IV");
+  it.each([[4, "IV"]])("converts number %d to roman %s", (number, expected) => {
+    expect(toRoman(number)).toBe(expected);
   });
 });
