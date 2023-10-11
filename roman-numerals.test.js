@@ -16,16 +16,10 @@ function toRoman(number) {
 }
 
 describe("roman numeral converter", () => {
-  it("converts number 1 to roman I", () => {
-    expect(toRoman(1)).toBe("I");
-  });
-  it("converts number 2 to roman II", () => {
-    expect(toRoman(2)).toBe("II");
-  });
-  it("converts number 3 to roman III", () => {
-    expect(toRoman(3)).toBe("III");
-  });
   it.each([
+    [1, "I"],
+    [2, "II"],
+    [3, "III"],
     [4, "IV"],
     [5, "V"],
   ])("converts number %d to roman %s", (number, expected) => {
