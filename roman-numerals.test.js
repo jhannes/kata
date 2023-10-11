@@ -1,5 +1,9 @@
 function toRoman(number) {
   let result = "";
+  if (number === 4) {
+    result += "IV";
+    number -= 4;
+  }
   while (number >= 1) {
     result += "I";
     number -= 1;
@@ -16,5 +20,8 @@ describe("roman numeral converter", () => {
   });
   it("converts number 3 to roman III", () => {
     expect(toRoman(3)).toBe("III");
+  });
+  it("converts number 4 to roman IV", () => {
+    expect(toRoman(4)).toBe("IV");
   });
 });
