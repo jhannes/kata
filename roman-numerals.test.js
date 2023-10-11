@@ -25,6 +25,17 @@ function toRoman(number) {
   return roman;
 }
 
+function fromRoman(roman) {
+  let number = 0;
+  for (const { digit, value } of ROMAN_DIGITS) {
+    while (roman.startsWith(digit)) {
+      number += value;
+      roman = roman.substring(digit.length);
+    }
+  }
+  return number;
+}
+
 describe("roman numeral converter", () => {
   it.each([
     [3888, "MMMDCCCLXXXVIII"],
