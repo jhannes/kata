@@ -11,6 +11,7 @@ function toRoman(number) {
       state.number -= digitValue;
     }
   }
+  convertRomanDigit("X", 10);
   convertRomanDigit("IX", 9);
   convertRomanDigit("V", 5);
   convertRomanDigit("IV", 4);
@@ -32,6 +33,8 @@ describe("roman numeral converter", () => {
     [6, "VI"],
     [8, "VIII"],
     [9, "IX"],
+    [10, "X"],
+    [20, "XX"],
   ])("converts number %d to roman %s", (number, expected) => {
     expect(toRoman(number)).toBe(expected);
   });
