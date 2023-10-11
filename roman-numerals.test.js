@@ -1,31 +1,28 @@
-function toRoman(number) {
-  let result = "";
-  const state = {
-    number,
-    result,
-  };
+const ROMAN_DIGITS = [
+  { digit: "M", value: 1000 },
+  { digit: "CM", value: 900 },
+  { digit: "D", value: 500 },
+  { digit: "CD", value: 400 },
+  { digit: "C", value: 100 },
+  { digit: "XC", value: 90 },
+  { digit: "L", value: 50 },
+  { digit: "XL", value: 40 },
+  { digit: "X", value: 10 },
+  { digit: "IX", value: 9 },
+  { digit: "V", value: 5 },
+  { digit: "IV", value: 4 },
+  { digit: "I", value: 1 },
+];
 
-  function convertRomanDigit(digit, digitValue) {
-    while (state.number >= digitValue) {
-      state.result += digit;
-      state.number -= digitValue;
+function toRoman(number) {
+  let roman = "";
+  for (const { digit, value } of ROMAN_DIGITS) {
+    while (number >= value) {
+      roman += digit;
+      number -= value;
     }
   }
-  convertRomanDigit("M", 1000);
-  convertRomanDigit("CM", 900);
-  convertRomanDigit("D", 500);
-  convertRomanDigit("CD", 400);
-  convertRomanDigit("C", 100);
-  convertRomanDigit("XC", 90);
-  convertRomanDigit("L", 50);
-  convertRomanDigit("XL", 40);
-  convertRomanDigit("X", 10);
-  convertRomanDigit("IX", 9);
-  convertRomanDigit("V", 5);
-  convertRomanDigit("IV", 4);
-  convertRomanDigit("I", 1);
-
-  return state.result;
+  return roman;
 }
 
 describe("roman numeral converter", () => {
