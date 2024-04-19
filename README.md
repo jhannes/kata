@@ -1,4 +1,4 @@
-# Coding exercises for teaching programming skills
+# Coding exercises for practicing programming skills
 
 
 ## Number as words
