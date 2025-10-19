@@ -69,34 +69,21 @@ Download [dotnet SDK](https://dotnet.microsoft.com/en-us/download) and [Visual S
 
 </details>
 
-### Jest with Typescript
+### Vitest with Typescript
 
 Install [NodeJs](https://nodejs.org/)
 
 <details>
 
 1. `npm init -y` (In a new empty directory)
-2. `npm install --save-dev typescript jest ts-jest @types/jest prettier`
+2. `npm install --save-dev husky typescript prettier vitest`
 3. `npx tsc --init`
-4. `npx ts-jest config:init`
-5. `npm pkg set scripts.test="jest"`
-6. `npm pkg set scripts.test:watch="jest --watchAll"`
-7. Create `__tests__/<...>.test.ts` with `describe("...", () => { it("...", () => {})})`
-8. `npm run test:watch`
-
-</details>
-
-### Jest with JavaScript
-
-Install [NodeJs](https://nodejs.org/)
-
-<details>
-
-1. `npm init -y` (In a new empty directory)
-2. `npm install --save-dev jest @types/jest prettier`
-3. `npm pkg set scripts.test="jest"`
-4. Create `__tests__/<...>.test.js` with `describe("...", () => { it("...", () => {})})`
-5. `npm run test -- --watch`
+4. `npx husky init`
+5. `npm pkg set type=module`
+6. `npm pkg set scripts.test="tsc --noEmit && vitest --run && prettier --check ."`
+7. `npm pkg set scripts.test:watch="vitest"`
+8. Create `<...>.test.ts` with `test("...", () => { expect(...).toBe(...))})`
+9. `npm run test:watch`
 
 </details>
 
