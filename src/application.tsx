@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./application.css";
+import { Dialog } from "./dialog.js";
 
 interface TaskItem {
   id: number;
@@ -39,11 +40,32 @@ function CompletionForm({
   );
 }
 
+function TaskList({
+  tasks,
+  onSelectTask,
+}: {
+  tasks: TaskItem[];
+  onSelectTask(t: TaskItem): void;
+}) {
+  return (
+    <>
+      {tasks.map((t) => (
+        <li key={t.id}>
+          <input type="checkbox" checked={t.completed} /> {t.summary}
+          <button onClick={() => onSelectTask(t)}>Complete</button>
+          {t.comments && <p>{t.comments}</p>}
+        </li>
+      ))}
+    </>
+  );
+}
+
 export function Application() {
   const [tasks, setTasks] = useState<TaskItem[]>([
     { id: 0, summary: "Fly to Bodø", completed: true },
     { id: 1, summary: "Show tasks", completed: false },
     { id: 2, summary: "Mark tasks as complete", completed: false },
+    { id: 3, summary: "Receive applaus", completed: false },
   ]);
   const [selectedTask, setSelectedTask] = useState<TaskItem | undefined>();
 
@@ -57,25 +79,19 @@ export function Application() {
   return (
     <div>
       <h1>Tasks</h1>
-      {tasks.map((t) => (
-        <li key={t.id}>
-          <input type="checkbox" checked={t.completed} /> {t.summary}
-          <button onClick={() => setSelectedTask(t)}>Complete</button>
-          {t.comments && <p>{t.comments}</p>}
-        </li>
-      ))}
-      <div className={"completionDialog" + (selectedTask ? " visible" : "")}>
-        <div className={"backdrop"}></div>
-        <div className={"dialog"}>
-          {selectedTask && (
-            <CompletionForm
-              selectedTask={selectedTask}
-              onUpdate={handleUpdate}
-              onCancel={() => setSelectedTask(undefined)}
-            />
-          )}
-        </div>
-      </div>
+      <TaskList tasks={tasks} onSelectTask={(t) => setSelectedTask(t)} />
+      <Dialog
+        visible={!!selectedTask}
+        onClose={() => setSelectedTask(undefined)}
+      >
+        {selectedTask && (
+          <CompletionForm
+            selectedTask={selectedTask}
+            onUpdate={handleUpdate}
+            onCancel={() => setSelectedTask(undefined)}
+          />
+        )}
+      </Dialog>
     </div>
   );
 }
