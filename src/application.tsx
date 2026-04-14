@@ -19,24 +19,36 @@ function CompletionForm({
   onCancel: () => void;
 }) {
   const [comments, setComments] = useState(selectedTask.comments || "");
+  const [completed, setCompleted] = useState(selectedTask.completed);
   return (
-    <div>
+    <form>
       <h1>Task: {selectedTask.summary}</h1>
       <div>
         Comments:
         <br />
         <textarea
+          autoFocus
           value={comments}
           onChange={(e) => setComments(e.target.value)}
         ></textarea>
       </div>
       <div>
-        <button onClick={() => onUpdate({ comments, completed: true })}>
+        <label>
+          <input
+            type="checkbox"
+            checked={completed}
+            onChange={(e) => setCompleted(e.target.checked)}
+          />{" "}
+          Completed
+        </label>
+      </div>
+      <div>
+        <button onClick={() => onUpdate({ comments, completed })}>
           Complete
         </button>
         <button onClick={onCancel}>Cancel</button>
       </div>
-    </div>
+    </form>
   );
 }
 
