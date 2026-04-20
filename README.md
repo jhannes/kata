@@ -9,6 +9,7 @@ Using `<dialog />` component to explain `useState`, `useEffect` and `useRef` in 
 ### Performance
 
 * [Dips](https://github.com/jhannes/kata/tree/javascript/performance/dips)
+* [Reference implementation](https://github.com/jhannes/kata/tree/javascript/reference/dialog)
 
 
 ## Number as words
