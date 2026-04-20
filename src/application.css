@@ -1,3 +1,8 @@
+/*
+ This halfway functioning code is needed for an old school approach to dialogs.
+ It only solves some of the problems. (No solution for tabbing to background components)
+ After we introduced <dialog /> it is no longer in use
+ */
 .dialog {
   .content {
     position: absolute;
