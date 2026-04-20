@@ -1,5 +1,15 @@
 # Coding exercises for practicing programming skills
 
+## `<Dialog />`
+
+Using `<dialog />` component to explain `useState`, `useEffect` and `useRef` in React.
+
+### Typescript/React
+
+### Performance
+
+* [Dips](https://github.com/jhannes/kata/tree/javascript/performance/dips)
+
 
 ## Number as words
 
