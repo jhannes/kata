@@ -1,14 +1,10 @@
 import { createRoot } from "react-dom/client";
-import { useState, type SubmitEvent, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "./application.css";
-
-interface TaskItem {
-  id: number;
-  completed: boolean;
-  title: string;
-  description?: string | undefined;
-}
+import type { TaskItem } from "./taskItem.js";
+import { TaskList } from "./taskList.js";
+import { CompletionForm } from "./completionForm.js";
 
 const INITIAL_TASKS: TaskItem[] = [
   { id: 1, title: "Fly til Body", completed: true },
@@ -17,85 +13,6 @@ const INITIAL_TASKS: TaskItem[] = [
   { id: 4, title: "Sjekke av todos", completed: true },
   { id: 5, title: "Vise dialog", completed: false },
 ];
-
-function TaskList({
-  tasks,
-  onChangeTask,
-  onSelectTask,
-}: {
-  tasks: TaskItem[];
-  onChangeTask: (delta: Partial<TaskItem>) => void;
-  onSelectTask: (t: TaskItem) => void;
-}) {
-  return (
-    <ul>
-      {tasks.map((t) => (
-        <li>
-          <label>
-            <input
-              type="checkbox"
-              checked={t.completed}
-              onChange={(e) =>
-                onChangeTask({ id: t.id, completed: e.target.checked })
-              }
-            />{" "}
-            {t.title}
-          </label>
-          <button onClick={() => onSelectTask(t)}>Endre</button>
-          {t.description && <p>{t.description}</p>}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function CompletionForm({
-  task,
-  onChangeTask,
-  onCancel,
-}: {
-  task: TaskItem;
-  onChangeTask: (delta: Partial<TaskItem>) => void;
-  onCancel: () => void;
-}) {
-  const [completed, setCompleted] = useState(task.completed);
-  const [description, setDescription] = useState(task.description);
-
-  function handleSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    onChangeTask({ id: task.id, completed, description });
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <h2>Oppdatert oppgave: {task.title}</h2>
-      <div>
-        <p>Beskrivelse</p>
-        <textarea
-          autoFocus
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={completed}
-            onChange={(e) => setCompleted(e.target.checked)}
-          />
-          Ferdig
-        </label>
-      </div>
-      <div>
-        <button>Lagre</button>
-      </div>
-      <div>
-        <button onClick={onCancel}>Avbryt</button>
-      </div>
-    </form>
-  );
-}
 
 function Application() {
   const [tasks, setTasks] = useState(INITIAL_TASKS);
