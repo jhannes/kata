@@ -1,0 +1,34 @@
+{
+  "name": "kata",
+  "version": "1.0.0",
+  "description": "For å mestre React er det mange ting man skal forstå. Det viktigste å starte med er React sin tilstandsmodell og hvordan\r denne forholder seg til tilstanden i nettleseren. Et <div>-element i React ser ut som det samme som en <div> i\r nettlesere, men det er subtile men viktige forskjeller. For å koble sammen de to verdene bruker React hooks som\r useState, useEffect og useRef. I denne forestillingen live koder vi med forklaring en demo som viser hvordan <dialog>\r -elementet som ble innført i HTML i 2022 kan brukes effektiv i React. Gjennom å utforme en applikasjon gradvis utforsker\r vi React sin tilstandsmodell, enkle grep for brukervennlighet, kodekvalitet og utviklingsprosess.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "tsc --noEmit && prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhannes/kata.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhannes/kata/issues"
+  },
+  "homepage": "https://github.com/jhannes/kata#readme",
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.9"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}
