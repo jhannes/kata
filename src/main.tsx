@@ -1,3 +1,6 @@
 import { createRoot } from "react-dom/client";
 
-createRoot(document.getElementById("app")!).render(<h1>Hello World</h1>);
+import "./application.css";
+import { Application } from "./application.js";
+
+createRoot(document.getElementById("app")!).render(<Application />);
